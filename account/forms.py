@@ -15,11 +15,15 @@ allowed_characters.append("-")
 
 
 class RegisterForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+    password_repeat = forms.CharField(widget=forms.PasswordInput, label='تکرار رمز عبور')
+
     class Meta:
         model = CustomUser
         fields = "__all__"
 
     def clean_mobile_phone(self):
+        print('vfe')
         mobile_phone = self.cleaned_data.get("mobile_phone")
         mobile_phone_exists = True
 
@@ -72,14 +76,12 @@ class RegisterForm(forms.ModelForm):
         return username
 
     def clean(self):
-        password_1 = self.cleaned_data.get("password_1")
-        password_2 = self.cleaned_data.get("password_2")
+        cleaned_data = super().clean()
+        password = cleaned_data.get("password")
+        password_repeat = cleaned_data.get("password_repeat")
 
-        if len(password_1) < 4:
-            raise ValidationError("رمز عبور باید حداقل 4 کاراکتر داشته باشد.", code="at least 4 characters")
-
-        if password_1 != password_2:
-            raise ValidationError("رمز عبور های وارد شده، مشابه نیستند.", code="passwords dis-match")
+        if password and password_repeat and password != password_repeat:
+            raise forms.ValidationError("پسورد ها با یکدیگر همخوانی ندارند!")
 
 
 class CheckOTPForm(forms.Form):

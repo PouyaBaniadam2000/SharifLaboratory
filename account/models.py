@@ -1,3 +1,5 @@
+from django.utils.text import slugify
+
 from account.validators import validate_mobile_phone, validate_username, validate_first_name, validate_email, \
     validate_last_name, validate_landline_phone
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
@@ -6,7 +8,6 @@ from django.core.validators import validate_slug
 from django.db import models
 from django.templatetags.static import static
 from django.utils.html import format_html
-from slugify import slugify
 
 
 class CustomUserManager(BaseUserManager):
@@ -56,14 +57,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     postal_code = models.CharField(unique=True, max_length=20, help_text="ضروری", verbose_name="کد پستی", blank=False,
                                    null=False)
 
-    address = models.CharField(unique=True, max_length=200, help_text="ضروری", verbose_name="آدرس", blank=False,
+    address = models.TextField(unique=True, max_length=200, help_text="ضروری", verbose_name="آدرس", blank=False,
                                null=False)
 
     company_name = models.CharField(max_length=100, help_text="ضروری", verbose_name="نام شرکت", blank=False, null=False)
 
     activity_field = models.CharField(max_length=100, verbose_name="حوزه فعالیت", blank=True, null=True)
 
-    email = models.EmailField(unique=True, blank=False, null=False, verbose_name="آدرس ایمیل",
+    email = models.EmailField(unique=True, blank=True, null=True, verbose_name="آدرس ایمیل",
                               validators=[validate_email], help_text="ضروری")
 
     first_name = models.CharField(max_length=50, blank=False, null=False, verbose_name="نام",
@@ -135,8 +136,8 @@ class OTP(models.Model):
     code = models.CharField(max_length=5, verbose_name="کد")
     token = models.CharField(max_length=36, verbose_name="توکن")
     type = models.CharField(max_length=50, verbose_name="نوع")
-    created_at = models.DateTimeField(auto_now_add=True)
-    delete_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="ایجاد شده در تاریخ")
+    delete_at = models.DateTimeField(null=True, blank=True, verbose_name="حذف شده در تاریخ")
 
     class Meta:
         verbose_name = "اُ-تی-پی"
@@ -144,3 +145,6 @@ class OTP(models.Model):
 
     def __str__(self):
         return f"{self.mobile_phone}"
+
+    def delete(self, *args, **kwargs):
+        super(OTP, self).delete(*args, **kwargs)

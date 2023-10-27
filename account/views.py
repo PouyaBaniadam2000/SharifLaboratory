@@ -1,7 +1,9 @@
 from random import randint
 from uuid import uuid4
 
-from account.forms import LoginForm, RegisterForm
+from django.http import HttpResponseRedirect
+
+from account.forms import LoginForm, RegisterForm, CheckOTPForm
 from account.mixins import NonAuthenticatedUsersOnlyMixin
 from account.models import CustomUser, OTP
 from account.sms import send_register_sms
@@ -15,24 +17,73 @@ from django.views.generic import FormView
 class RegisterView(NonAuthenticatedUsersOnlyMixin, FormView):
     template_name = "account/register.html"
     form_class = RegisterForm
-    success_url = reverse_lazy("account:check_otp")
+    success_url = reverse_lazy("home:home")
 
     def form_valid(self, form):
         code = randint(1000, 9999)
-        receptor = form.cleaned_data.get('phone')
+        receptor = form.cleaned_data.get('mobile_phone')
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password_1')
+        landline_phone = form.cleaned_data.get('landline_phone')
+        postal_code = form.cleaned_data.get('postal_code')
+        address = form.cleaned_data.get('address')
+        company_name = form.cleaned_data.get('company_name')
+        activity_field = form.cleaned_data.get('activity_field')
+        email = form.cleaned_data.get('email')
+        first_name = form.cleaned_data.get('first_name')
+        last_name = form.cleaned_data.get('last_name')
         token = str(uuid4())
 
-        send_register_sms(receptor=receptor, code=code)
+        # send_register_sms(receptor=receptor, code=code)
+        print(code)
 
-        OTP.objects.create(phone=receptor, code=code, token=token, username=username, password=password,
-                           type="phone_register_mode")
+        OTP.objects.create(mobile_phone=receptor, code=code, token=token, landline_phone=landline_phone,
+                           postal_code=postal_code, address=address, company_name=company_name,
+                           activity_field=activity_field, email=email, first_name=first_name, last_name=last_name,
+                           username=username, password=password, type="phone_register_mode")
 
         return redirect(reverse("account:check_otp") + f"?token={token}")
 
     def form_invalid(self, form):
         return super().form_invalid(form)
+
+
+class CheckOTPView(FormView):
+    form_class = CheckOTPForm
+    template_name = 'account/check_otp_code.html'
+
+    def form_valid(self, form):
+        token = self.request.GET.get('token')
+        if OTP.objects.filter(token=token, code=form.cleaned_data.get('code'), type="phone_register_mode").exists():
+            otp = OTP.objects.get(token=token)
+
+            user = CustomUser.objects.create_user(mobile_phone=otp.mobile_phone, landline_phone=otp.landline_phone,
+                                                  username=otp.username, password=otp.password, email=otp.email,
+                                                  first_name=otp.first_name, last_name=otp.last_name,
+                                                  postal_code=otp.postal_code, address=otp.address,
+                                                  company_name=otp.company_name, activity_field=otp.activity_field)
+
+            login(self.request, user)
+            print(otp.username)
+            otp.delete()
+            otp.save()
+
+            success_url = reverse_lazy('home:home')
+            return HttpResponseRedirect(success_url)
+
+        elif OTP.objects.filter(token=token, code=form.cleaned_data.get('code'), type="forget_password_mode").exists():
+            return redirect(reverse("account:change_password") + f"?token={token}")
+
+        elif OTP.objects.filter(token=token, code=form.cleaned_data.get('code'), type="delete_account_mode").exists():
+            otp = OTP.objects.get(token=token)
+            user_to_be_deleted = CustomUser.objects.get(username=otp.username, phone=otp.phone, city=otp.city)
+
+            user_to_be_deleted.delete()
+            return redirect("home:home")
+
+        else:
+            form.add_error('code', 'کد تأیید نامعتبر است یا منقضی شده است.')
+            return self.form_invalid(form)
 
 
 class LoginView(FormView):

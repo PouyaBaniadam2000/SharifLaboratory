@@ -1,0 +1,109 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'public/build/style.css' %}">
+    <title>ثبت نام</title>
+</head>
+<body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
+
+<div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-sm sm:mx-auto">
+        <div
+                class="absolute inset-0 bg-stone-900 transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+        </div>
+        <div class="relative px-4 py-10 bg-gradient-to-t from-orange-100 to-[#f5f1e4] sm:rounded-3xl sm:p-14">
+
+            <div class="max-w-md mx-auto">
+                <div>
+                    <h1 class="text-xl text-center font-YekanBakh-Bold">ثبت نام</h1>
+                </div>
+                <div class="divide-y divide-gray-200">
+                    <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                        <form action="" method="post">
+                            {% csrf_token %}
+
+                            {{ form.username|attr:"placeholder:* نام کاربری"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            <br>
+                            <br>
+                            {{ form.first_name|attr:"placeholder:* نام"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            <br>
+                            <br>
+                            {{ form.last_name|attr:"placeholder:* نام خانوادگی"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            <br>
+                            <br>
+                            {{ form.company_name|attr:"placeholder:* نام شرکت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            <br>
+                            <br>
+                            {{ form.company_name|attr:"placeholder:حوزه فعالیت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"required:false" }}
+                            <br>
+                            <br>
+                            {{ form.mobile_phone|attr:"placeholder:* تلفن همراه"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            <br>
+                            <br>
+                            {{ form.landline_phone|attr:"placeholder:* تلفن ثابت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            <br>
+                            <br>
+                            {{ form.email|attr:"placeholder:* آدرس ایمیل"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            <br>
+                            <br>
+                            {{ form.address|attr:"placeholder:* آدرس"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            <br>
+                            <br>
+                            {{ form.postal_code|attr:"placeholder:* کد پستی"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            <br>
+                            <br>
+
+                            {#                            <label>#}
+                            {#                                <input type="text" placeholder="نام کاربری:"#}
+                            {#                                       class="input w-full rounded-full focus:outline-none placeholder:text-sm"/>#}
+                            {#                            </label>#}
+                            {##}
+                            {##}
+                            {#                            <label>#}
+                            {#                                <input type="email" placeholder="پست الکترونیکی:"#}
+                            {#                                       class="input w-full rounded-full focus:outline-none placeholder:text-sm"/>#}
+                            {#                            </label>#}
+                            {##}
+                            {##}
+                            {#                            <label>#}
+                            {#                                <input type="email" placeholder="رمز عبور:"#}
+                            {#                                       class="input w-full rounded-full focus:outline-none placeholder:text-sm"/>#}
+                            {#                            </label>#}
+
+                            <button class="btn bg-stone-800 w-full hover:bg-stone-900 text-white rounded-full text-sm">
+                                ثبت
+                                نام
+                            </button>
+
+                        </form>
+                        <p class="mt-6 text-xs text-gray-600 text-center leading-8">
+                            قبلا حساب کاربری ساخته اید؟
+                            <a href="{% url 'account:login' %}" class="border-b border-gray-500 border-dotted">
+                                وارد شوید.
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full flex justify-center">
+                <a href="{% url 'home:home' %}">
+                    <button class="flex items-center bg-white rounded-full px-6 py-2 text-sm font-medium text-gray-800 hover:bg-orange-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 hover:duration-300">
+                        بازگشت به صفحه اصلی
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'node_modules/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'src/js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+from django.db import models
+
+
+class Message(models.Model):
+    title = models.CharField(max_length=100, verbose_name="عنوان", help_text="ضروری")
+    name = models.CharField(max_length=100, verbose_name="نام و نام خانوادگی", help_text="ضروری")
+    mobile_phone = models.CharField(max_length=11, verbose_name="شماره تلفن همراه", help_text="ضروری")
+    email = models.EmailField(max_length=255, verbose_name="آدرس ایمیل", help_text="ضروری")
+    body = models.TextField(max_length=1000, verbose_name="بدنه", help_text="ضروری")
+
+    def __str__(self):
+        return f"{self.title} - {self.name}"
+
+    class Meta:
+        verbose_name = "پیام"
+        verbose_name_plural = "پیام ها"
+
+
+class ContactInfo(models.Model):
+    address = models.CharField(max_length=200, verbose_name="آدرس", help_text="ضروری")
+    email = models.EmailField(max_length=255, verbose_name="ایمیل", help_text="ضروری")
+    mobile_phone = models.CharField(max_length=11, verbose_name="شماره تلفن همراه", help_text="ضروری")
+    landline_phone = models.CharField(unique=True, max_length=15, verbose_name="شماره تلفن ثابت", help_text="ضروری")
+
+    def __str__(self):
+        return "پل ارتباطی"
+
+    class Meta:
+        verbose_name = "پل ارتباطی"
+        verbose_name_plural = "پل های ارتباطی"

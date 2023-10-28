@@ -21,6 +21,8 @@
             <div class="max-w-md mx-auto">
                 <div>
                     <h1 class="text-xl text-center font-YekanBakh-Bold">ورود</h1>
+                    <br>
+                    <p style="color: #CC3434">{{ request.GET.message }}</p>
                 </div>
                 <div class="divide-y divide-gray-200">
                     <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
@@ -51,7 +53,8 @@
                             </button>
                             <p class="mt-6 text-xs text-gray-600 text-center leading-8">
                                 رمز عبور خود را فراموش کرده اید؟
-                                <a href="{% url 'account:forget_password' %}" class="border-b border-gray-500 border-dotted">
+                                <a href="{% url 'account:forget_password' %}"
+                                   class="border-b border-gray-500 border-dotted">
                                     کلیک کنید.
                                 </a>
                                 <br>

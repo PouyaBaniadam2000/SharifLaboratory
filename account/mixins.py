@@ -1,4 +1,5 @@
 from django.shortcuts import redirect
+from django.urls import reverse
 
 
 class NonAuthenticatedUsersOnlyMixin:
@@ -11,5 +12,8 @@ class NonAuthenticatedUsersOnlyMixin:
 class AuthenticatedUsersOnlyMixin:
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect("account:register")
+            redirect_url = reverse("account:login")
+            message = "جهت ثبت شکایت، ابتدا باید وارد حساب کاربری خود شوید."
+            redirect_url += f'?message={message}'
+            return redirect(redirect_url)
         return super(AuthenticatedUsersOnlyMixin, self).dispatch(request, *args, **kwargs)

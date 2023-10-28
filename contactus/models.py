@@ -1,5 +1,7 @@
 from django.db import models
 
+from account.models import CustomUser
+
 
 class Message(models.Model):
     title = models.CharField(max_length=100, verbose_name="عنوان", help_text="ضروری")
@@ -14,6 +16,18 @@ class Message(models.Model):
     class Meta:
         verbose_name = "پیام"
         verbose_name_plural = "پیام ها"
+
+
+class Complaint(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name="کاربر", help_text="ضروری")
+    body = models.TextField(max_length=500, verbose_name="بدنه", help_text="ضروری")
+
+    def __str__(self):
+        return "شکایت"
+
+    class Meta:
+        verbose_name = "شکایت"
+        verbose_name_plural = "شکایات"
 
 
 class ContactInfo(models.Model):

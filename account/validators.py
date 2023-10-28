@@ -11,6 +11,7 @@ for __ in range(0, 10):
     allowed_characters_for_username.append(str(__))
 allowed_characters_for_username.append("_")
 allowed_characters_for_username.append("-")
+allowed_characters_for_username.append("‌")
 
 not_starting_and_finishing_with_for_username = ["_", "-"]
 

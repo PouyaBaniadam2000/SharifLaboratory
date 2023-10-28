@@ -3,10 +3,10 @@ from uuid import uuid4
 
 from django.http import HttpResponseRedirect
 
-from account.forms import LoginForm, RegisterForm, CheckOTPForm
+from account.forms import LoginForm, RegisterForm, CheckOTPForm, ChangePasswordForm, ForgetPasswordForm
 from account.mixins import NonAuthenticatedUsersOnlyMixin
 from account.models import CustomUser, OTP
-from account.sms import send_register_sms
+from account.sms import send_register_sms, send_forget_password_code_sms
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
@@ -64,7 +64,6 @@ class CheckOTPView(FormView):
                                                   company_name=otp.company_name, activity_field=otp.activity_field)
 
             login(self.request, user)
-            print(otp.username)
             otp.delete()
             otp.save()
 
@@ -119,3 +118,60 @@ class LogOutView(View):
         logout(request)
         next_url = request.GET.get('next', 'home:home')
         return redirect(next_url)
+
+
+class ForgetPassword(NonAuthenticatedUsersOnlyMixin, FormView):
+    template_name = "account/forget_password.html"
+    form_class = ForgetPasswordForm
+    success_url = reverse_lazy("account:check_otp")
+
+    def form_valid(self, form):
+        mobile_phone_or_username = form.cleaned_data.get('mobile_phone_or_username')
+
+        if str(mobile_phone_or_username).isdigit():
+            user = CustomUser.objects.get(mobile_phone=mobile_phone_or_username)
+
+        else:
+            user = CustomUser.objects.get(username=mobile_phone_or_username)
+
+        receptor = user.mobile_phone
+
+        code = randint(1000, 9999)
+        token = str(uuid4())
+
+        # send_forget_password_code_sms(receptor=receptor, code=code)
+        print(code)
+
+        OTP.objects.create(mobile_phone=receptor, code=code, token=token, type="forget_password_mode")
+        receptor = f"{receptor[7:12]}...{receptor[0:4]}"
+        return redirect(reverse("account:check_otp") + f"?token={token}&mobile_phone={receptor}")
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
+
+
+class ChangePassword(NonAuthenticatedUsersOnlyMixin, FormView):
+    form_class = ChangePasswordForm
+    template_name = 'account/change_password.html'
+    success_url = reverse_lazy('home:home')
+
+    def form_valid(self, form):
+        new_password = form.cleaned_data.get('password_1')
+        token = self.request.GET.get('token')
+
+        retrieved_user = OTP.objects.get(token=token)
+
+        username = CustomUser.objects.get(mobile_phone=retrieved_user)
+        user = CustomUser.objects.get(username=username)
+
+        user.set_password(new_password)
+        user.save()
+
+        login(self.request, user)
+
+        try:
+            retrieved_user.delete()
+        except:
+            pass
+
+        return redirect(reverse("home:home"))

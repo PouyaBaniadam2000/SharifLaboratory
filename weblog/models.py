@@ -16,8 +16,7 @@ class Weblog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="ایجاد شده در تاریخ")
     actual_jalali_date = models.CharField(max_length=100, blank=True, null=True, verbose_name="تاریخ جلالی",
                                           help_text="ضروری")
-    slug = models.SlugField(unique=True, allow_unicode=True, blank=True, null=True, verbose_name="اسلاگ (متن داخل URL)",
-                            editable=False)
+    slug = models.SlugField(unique=True, allow_unicode=True, blank=True, null=True, verbose_name="اسلاگ (متن داخل URL)")
 
     def __str__(self):
         return self.title

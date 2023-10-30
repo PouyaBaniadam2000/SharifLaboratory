@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
+{% block title %} جزئیات پروژه | {{ project.title }} {% endblock %}
 
+
+{% block content %}
     <section class="px-4 mb-24">
         <div class="container mx-auto max-w-screen-xl">
             <nav class="flex mb-5 border-y border-orange-200 py-3" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-2">
                     <li class="inline-flex items-center">
-                        <a href="#" class="inline-flex items-center">
+                        <a href="{% url 'home:home' %}" class="inline-flex items-center">
                             خانه
                         </a>
                     </li>
@@ -19,16 +21,16 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
                             </svg>
 
-                            <a href="#" class="mr-1 text-sm font-medium">جزئیات پروژه</a>
+                            <a href="" class="mr-1 text-sm font-medium">{{ project.title }}</a>
                         </div>
                     </li>
                 </ol>
             </nav>
             <div class="flex flex-col items-center justify-center relative my-16">
-                <h2 class="font-YekanBakh-ExtraBlack text-3xl">جزئیات پروژه</h2>
+                <h2 class="font-YekanBakh-ExtraBlack text-3xl">{{ project.title }}</h2>
 
                 <div class="bg-orange-200 w-20 h-1.5 rounded-full absolute top-10"></div>
-                <p class="mt-4">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                <p class="mt-4">{{ project.project_preview }}</p>
             </div>
 
             <div class="max-w-4xl mx-auto">
@@ -49,9 +51,12 @@
                             <div class="swiper-slide">
                                 <img class="rounded-xl cursor-pointer" src="{{ project.image_4.url }}"/>
                             </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ project.image_5.url }}"/>
-                            </div>
+
+                            {% if project.image_5 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ project.image_5.url }}"/>
+                                </div>
+                            {% endif %}
 
                             {% if project.image_6 %}
                                 <div class="swiper-slide">
@@ -68,18 +73,6 @@
                             {% if project.image_8 %}
                                 <div class="swiper-slide">
                                     <img class="rounded-xl cursor-pointer" src="{{ project.image_8.url }}"/>
-                                </div>
-                            {% endif %}
-
-                            {% if project.image_9 %}
-                                <div class="swiper-slide">
-                                    <img class="rounded-xl cursor-pointer" src="{{ project.image_9.url }}"/>
-                                </div>
-                            {% endif %}
-
-                            {% if project.image_10 %}
-                                <div class="swiper-slide">
-                                    <img class="rounded-xl cursor-pointer" src="{{ project.image_10.url }}"/>
                                 </div>
                             {% endif %}
 
@@ -101,9 +94,12 @@
                             <div class="swiper-slide">
                                 <img class="rounded-xl cursor-pointer" src="{{ project.image_4.url }}"/>
                             </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ project.image_5.url }}"/>
-                            </div>
+
+                            {% if project.image_5 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ project.image_5.url }}"/>
+                                </div>
+                            {% endif %}
 
                             {% if project.image_6 %}
                                 <div class="swiper-slide">
@@ -122,19 +118,6 @@
                                     <img class="rounded-xl cursor-pointer" src="{{ project.image_8.url }}"/>
                                 </div>
                             {% endif %}
-
-                            {% if project.image_9 %}
-                                <div class="swiper-slide">
-                                    <img class="rounded-xl cursor-pointer" src="{{ project.image_9.url }}"/>
-                                </div>
-                            {% endif %}
-
-                            {% if project.image_10 %}
-                                <div class="swiper-slide">
-                                    <img class="rounded-xl cursor-pointer" src="{{ project.image_10.url }}"/>
-                                </div>
-                            {% endif %}
-
 
                         </div>
                     </div>
@@ -176,9 +159,11 @@
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                               d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/>
                                     </svg>
+
                                 </div>
                                 <div class="mr-2">محل پروژه: {{ project.location }}</div>
                             </div>
+
                             <div class="bg-orange-200 rounded-lg flex items-center">
                                 <div class="bg-stone-900 text-white rounded-lg p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -186,6 +171,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                               d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/>
                                     </svg>
+
                                 </div>
                                 <div class="mr-2">ارزش مالی: {{ project.financial_value }}</div>
                             </div>
@@ -196,13 +182,13 @@
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                               d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
                                     </svg>
+
                                 </div>
                                 <div class="mr-2">{{ project.date }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <p style="color: #CC3434; margin-bottom: 5px">کتگوری ها</p>
 
                 {% for category in project.categories.all %}
@@ -218,28 +204,26 @@
                         {% if next_project %}
                             <div class="mr-2">
                                 <a href="{% url 'project:project_detail' next_project.slug %}"><span
-                                        class="font-IRANSansWeb_Bold bg-orange-200 rounded-full px-4 py-1">< پروژه بعدی</span></a>
-                                <p class="mt-2">با مطالعه پروژه بعدی یعنی <a style="color: #CC3434"
+                                        class="font-IRANSansWeb_Bold bg-orange-200 rounded-full px-4 py-1">< مقاله بعدی</span></a>
+                                <p class="mt-2">با مطالعه مقاله بعدی یعنی <a style="color: #CC3434"
                                                                              href="{% url 'project:project_detail' next_project.slug %}"><span>{{ next_project.title }}، </span></a>به
-                                    ما را بهتر بشناسید.</p>
+                                    دانش خود بیفزایید.</p>
                             </div>
                         {% endif %}
 
                         {% if previous_project %}
                             <div class="mr-2">
                                 <a href="{% url 'project:project_detail' previous_project.slug %}"><span
-                                        class="font-IRANSansWeb_Bold bg-orange-200 rounded-full px-4 py-1">پروژه قبلی ></span></a>
-                                <p class="mt-2">با مطالعه پروژه قبلی یعنی <a style="color: #CC3434"
+                                        class="font-IRANSansWeb_Bold bg-orange-200 rounded-full px-4 py-1">مقاله قبلی ></span></a>
+                                <p class="mt-2">با مشاهده پروژه قبلی یعنی <a style="color: #CC3434"
                                                                              href="{% url 'project:project_detail' previous_project.slug %}"><span>{{ previous_project.title }}، </span></a>یک
-                                    مروری نسبت به پروژه های انجام شده توسط شرکت ما بیندازید.</p>
+                                    مروری نسبت به فعالیت های انجام شده توسط تیم ما داشته باشید.</p>
                             </div>
                         {% endif %}
                     </div>
 
                 </div>
-
             </div>
         </div>
     </section>
-
 {% endblock %}

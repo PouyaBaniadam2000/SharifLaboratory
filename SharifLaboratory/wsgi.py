@@ -1,5 +1,5 @@
 """
-WSGI config for SharifLaboratory project.
+WSGI config for SharifLaboratory new.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

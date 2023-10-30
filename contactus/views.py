@@ -34,3 +34,6 @@ class ComplaintView(AuthenticatedUsersOnlyMixin, FormView):
         form.save()
         messages.success(self.request, "شکایت شما با موفقیت ارسال شد.")
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)

@@ -1,5 +1,5 @@
 """
-ASGI config for SharifLaboratory project.
+ASGI config for SharifLaboratory new.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

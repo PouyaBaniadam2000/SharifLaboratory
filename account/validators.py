@@ -81,6 +81,11 @@ def validate_landline_phone(value):
         raise ValidationError("شماره تلفن نامعتبر است.")
 
 
+def validate_national_code(value):
+    if not str(value).isnumeric():
+        raise ValidationError("کد ملی فقط میتواند از ارقام تشکیل شده باشد.", code="digits only")
+
+
 def validate_email(value):
     email = value
     email_exists = True

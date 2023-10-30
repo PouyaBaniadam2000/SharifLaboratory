@@ -10,6 +10,7 @@ urlpatterns = [
     path('about/', include('about.urls')),
     path('weblog/', include('weblog.urls')),
     path('project/', include('project.urls')),
+    path('tiding/', include('tiding.urls')),
     path('account/', include('account.urls')),
     path('contact-us/', include('contactus.urls')),
     path('admission/', include('admission.urls')),

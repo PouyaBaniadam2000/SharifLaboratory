@@ -8,7 +8,7 @@
             <nav class="flex mb-5 border-y border-orange-200 py-3" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-2">
                     <li class="inline-flex items-center">
-                        <a href="#" class="inline-flex items-center">
+                        <a href="{% url 'home:home' %}" class="inline-flex items-center">
                             خانه
                         </a>
                     </li>
@@ -19,7 +19,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
                             </svg>
 
-                            <a href="#" class="mr-1 text-sm font-medium">اخبار</a>
+                            <a href="" class="mr-1 text-sm font-medium">اخبار</a>
                         </div>
                     </li>
                 </ol>
@@ -34,7 +34,7 @@
 
                 <div class="absolute -top-6">
                     {% if request.GET.category %}
-                        <span class="font-YekanBakh-ExtraBlack text-6xl text-opacity-10 text-stone-900">tiding categories</span>
+                        <span class="font-YekanBakh-ExtraBlack text-6xl text-opacity-10 text-stone-900">categories</span>
                     {% else %}
                         <span class="font-YekanBakh-ExtraBlack text-6xl text-opacity-10 text-stone-900">tidings</span>
                     {% endif %}

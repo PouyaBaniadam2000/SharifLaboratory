@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} جزئیات اخبار | {{ tiding.title }} {% endblock %}
+
+
+{% block content %}
+    <section class="px-4 mb-24">
+        <div class="container mx-auto max-w-screen-xl">
+            <nav class="flex mb-5 border-y border-orange-200 py-3" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-2">
+                    <li class="inline-flex items-center">
+                        <a href="{% url 'home:home' %}" class="inline-flex items-center">
+                            خانه
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                 stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
+                            </svg>
+
+                            <a href="" class="mr-1 text-sm font-medium">{{ tiding.title }}</a>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+            <div class="flex flex-col items-center justify-center relative my-16">
+                <h2 class="font-YekanBakh-ExtraBlack text-3xl">{{ tiding.title }}</h2>
+
+                <div class="bg-orange-200 w-20 h-1.5 rounded-full absolute top-10"></div>
+                <p class="mt-4">{{ tiding.tiding_preview }}</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+
+                <div class="mb-12">
+                    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                         class="swiper project-main">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img class="rounded-xl cursor-pointer" src="{{ tiding.image_1.url }}"/>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="rounded-xl cursor-pointer" src="{{ tiding.image_2.url }}"/>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="rounded-xl cursor-pointer" src="{{ tiding.image_3.url }}"/>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="rounded-xl cursor-pointer" src="{{ tiding.image_4.url }}"/>
+                            </div>
+
+                            {% if tiding.image_5 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ tiding.image_5.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if tiding.image_6 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ tiding.image_6.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if tiding.image_7 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ tiding.image_7.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if tiding.image_8 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ tiding.image_8.url }}"/>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                        <div class="swiper-button-next after:text-sm"></div>
+                        <div class="swiper-button-prev after:text-sm"></div>
+                    </div>
+                    <div thumbsSlider="" class="swiper gall-project mt-4">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img class="rounded-xl cursor-pointer" src="{{ tiding.image_1.url }}"/>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="rounded-xl cursor-pointer" src="{{ tiding.image_2.url }}"/>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="rounded-xl cursor-pointer" src="{{ tiding.image_3.url }}"/>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="rounded-xl cursor-pointer" src="{{ tiding.image_4.url }}"/>
+                            </div>
+
+                            {% if tiding.image_5 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ tiding.image_5.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if tiding.image_6 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ tiding.image_6.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if tiding.image_7 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ tiding.image_7.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if tiding.image_8 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ tiding.image_8.url }}"/>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="leading-8 mb-12">
+
+                    <!-- Tab Content -->
+                    <div id="tab1" class="p-4 tab-content rounded-lg">
+                        <h2 class="font-YekanBakh-ExtraBold text-2xl mb-4 text-center">توضیحات</h2>
+                        <p>{{ tiding.body|safe }}</p>
+                    </div>
+                </div>
+                <p style="color: #CC3434; margin-bottom: 5px">کتگوری ها</p>
+
+                {% for category in tiding.categories.all %}
+                    <div style="background: #CC3434; border-radius: 100px; display: inline-block; margin-bottom: 50px">
+                        <a href="{% url 'tiding:all_tidings' %}?category={{ category.category }}">
+                            <p style="padding: 10px">#{{ category.category }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+
+                <div class="mb-12">
+                    <div class="flex items-center mb-6">
+                        {% if next_tiding %}
+                            <div class="mr-2">
+                                <a href="{% url 'tiding:tiding_detail' next_tiding.slug %}"><span
+                                        class="font-IRANSansWeb_Bold bg-orange-200 rounded-full px-4 py-1">< خبر بعدی</span></a>
+                                <p class="mt-2">با مطالعه خبر بعدی یعنی <a style="color: #CC3434"
+                                                                           href="{% url 'tiding:tiding_detail' next_tiding.slug %}"><span>{{ next_tiding.title }}، </span></a>به
+                                    بیشتر به اخبار روز علم و صنعت اشراف داشته باشید.</p>
+                            </div>
+                        {% endif %}
+
+                        {% if previous_tiding %}
+                            <div class="mr-2">
+                                <a href="{% url 'tiding:tiding_detail' previous_tiding.slug %}"><span
+                                        class="font-IRANSansWeb_Bold bg-orange-200 rounded-full px-4 py-1">خبر قبلی ></span></a>
+                                <p class="mt-2">با مطالعه خبر قبلی یعنی <a style="color: #CC3434"
+                                                                           href="{% url 'tiding:tiding_detail' previous_tiding.slug %}"><span>{{ previous_tiding.title }}، </span></a>یک
+                                    مروری نسبت به اخبار قدیمی تر دنیای علم و صنعت داشته باشید.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

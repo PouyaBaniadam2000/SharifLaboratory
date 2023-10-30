@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 from home.models import GeneralWebsiteIdea, GeneralWebsiteIdeaImage, SharifLabServicePreview, TeamMember, Certificate
 from project.models import Project
+from tiding.models import Tiding
 from weblog.models import Weblog
 
 
@@ -14,6 +15,7 @@ class Home(TemplateView):
         context["team_members"] = TeamMember.objects.all()
         context["latest_weblogs"] = Weblog.objects.filter(is_allowed=True)[:4]
         context["latest_projects"] = Project.objects.filter(is_allowed=True)[:3]
+        context["latest_tidings"] = Tiding.objects.filter(is_allowed=True)[:3]
         context["certificates"] = Certificate.objects.all()
 
         return context

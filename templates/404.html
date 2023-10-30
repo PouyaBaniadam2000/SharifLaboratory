@@ -66,7 +66,7 @@
             </div>
             <div class="flex items-center gap-8">
                 <div>
-                    <a href="index.html"><img src="../assets/images/logo.png" alt=""></a>
+                    <a href="{% url 'home:home' %}"><img src="{% static 'assets/images/logo.png' %}" alt=""></a>
                 </div>
                 <div class="hidden lg:block">
                     <ul class="flex gap-x-8">
@@ -88,7 +88,8 @@
                 </div>
             </div>
             <div class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
-                <a href="login.html" class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">ورود | ثبت نام</a>
+                <a href="{% url 'account:login' %}" class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">ورود |
+                    ثبت نام</a>
             </div>
 
         </div>

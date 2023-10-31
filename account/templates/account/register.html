@@ -70,7 +70,6 @@
                                     {{ form.non_field_errors }}
                                 </div>
                             {% endif %}
-
                             <br>
                             <br>
 
@@ -101,7 +100,7 @@
                             <br>
                             <br>
 
-                            {{ form.company_name|attr:"placeholder:* نام شرکت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            {{ form.company_name|attr:"placeholder:* نام شرکت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"id:company_name" }}
                             {% if form.company_name.errors %}
                                 <div style="color:#CC3434;">
                                     {{ form.company_name.errors }}
@@ -110,14 +109,10 @@
                             <br>
                             <br>
 
-                            {{ form.activity_field|attr:"placeholder:حوزه فعالیت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"required:false" }}
-                            {% if form.activity_field.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.activity_field.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                            {{ form.activity_field|attr:"placeholder:حوزه فعالیت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"style:display:none;"|attr:"class:activity_field" }}
+
+<div style="height: 50px;">
+</div>
 
                             {{ form.address|attr:"placeholder:* آدرس"|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm" }}
                             {% if form.address.errors %}
@@ -167,5 +162,21 @@
 
 <script src="{% static 'node_modules/swiper/swiper-bundle.min.js' %}"></script>
 <script src="{% static 'src/js/main.js' %}"></script>
+
+<script>
+    document.getElementById("company_name").addEventListener("click", function () {
+        var activityField = document.querySelector(".activity_field");
+        activityField.forEach(element => {
+            if (activityField.style.display === "none") {
+                activityField.style.display = "block";
+            } else {
+                activityField.style.display = "none";
+            }
+        });
+
+    });
+</script>
+
+
 </body>
 </html>

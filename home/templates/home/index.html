@@ -267,7 +267,7 @@
                                 </div>
 
                                 <a href="{% url 'weblog:weblog_detail' latest_weblog.slug %}">
-                                    <p>{{ latest_weblog.body|truncatewords:15 }}</p>
+                                    <p>{{ latest_weblog.body|truncatewords:15|safe }}</p>
                                 </a>
 
                             </div>

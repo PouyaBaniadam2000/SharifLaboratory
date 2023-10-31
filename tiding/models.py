@@ -5,7 +5,7 @@ from django.utils.html import format_html
 
 class Tiding(models.Model):
     title = models.CharField(max_length=50, verbose_name="تیتر", help_text="ضروری")
-    tiding_preview = models.CharField(max_length=200, verbose_name="درباره پروژه", help_text="ضروری")
+    tiding_preview = models.CharField(max_length=200, verbose_name="درباره خبر", help_text="ضروری")
     image_1 = models.ImageField(upload_to="new/new/images", verbose_name="تصویر 1", help_text="ضروری")
     image_2 = models.ImageField(upload_to="new/new/images", verbose_name="تصویر 2", help_text="ضروری")
     image_3 = models.ImageField(upload_to="new/new/images", verbose_name="تصویر 3", help_text="ضروری")

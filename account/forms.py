@@ -12,7 +12,6 @@ for __ in range(0, 10):
     allowed_characters.append(str(__))
 allowed_characters.append("_")
 allowed_characters.append("-")
-allowed_characters.append("‌")
 
 
 class RegisterForm(forms.ModelForm):
@@ -92,7 +91,6 @@ class RegisterForm(forms.ModelForm):
 
         if str(password).isdigit():
             raise ValidationError("رمز عبور باید باید حداقل 1 عدد داشته باشد.", code="at least 1 digit")
-
 
 
 class LoginForm(forms.Form):

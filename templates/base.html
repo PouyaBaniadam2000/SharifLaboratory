@@ -52,7 +52,7 @@
                                    href="{% url 'home:home' %}">صفحه
                                 اصلی</a></li>
                             <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'project:all_projects' %}">پروژه ها</a>
+                                   href="{% url 'record:all_records' %}">سوابق</a>
                             </li>
                             <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                    href="{% url 'weblog:all_weblogs' %}">وبلاگ ها</a>
@@ -63,8 +63,6 @@
                             <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                    href="{% url 'about:faq' %}">سوالات
                                 متداول</a></li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'about:about_us' %}">درباره ما</a></li>
                             <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                    href="{% url 'contact_us:contact_us' %}">تماس با ما</a></li>
                             <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
@@ -77,25 +75,22 @@
             </div>
             <div class="flex items-center gap-8">
                 <div>
-                    <a href=""><img src="{% static 'assets/images/logo-dark.png' %}" alt=""></a>
+                    <a href=""><img src="{% static 'assets/images/logo.png' %}" alt=""></a>
                 </div>
                 <div class="hidden lg:block">
                     <ul class="flex gap-x-8">
                         <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                href="{% url 'home:home' %}">صفحه اصلی</a></li>
                         <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'project:all_projects' %}">پروژه ها</a>
+                               href="{% url 'record:all_records' %}">سوابق</a>
                         </li>
                         <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                href="{% url 'weblog:all_weblogs' %}">وبلاگ ها</a></li>
                         <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                href="{% url 'tiding:all_tidings' %}">اخبار</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" style="padding-bottom: 100px"
                                href="{% url 'about:faq' %}">سوالات
                             متداول</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'about:about_us' %}">درباره
-                            ما</a></li>
                         <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                href="{% url 'contact_us:contact_us' %}">تماس
                             با ما</a></li>
@@ -142,18 +137,17 @@
     <div class="container mx-auto max-w-screen-xl">
         <div class="grid grid-cols-12 gap-4 leading-8">
             <div class="col-span-12 lg:col-span-5">
-                <img class="mb-4" src="{% static 'assets/images/logo-light.png' %}" alt="">
+                <img class="mb-4" src="{% static 'assets/images/logo.png' %}" alt="">
                 <p>{{ footer_general_website_idea.body }}</p>
             </div>
             <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-2 text-right md:text-center">
                 <h3 class="font-IRANSansWeb_Bold text-white mb-4 text-base">دسترسی سریع</h3>
                 <ul>
                     <li><a href="{% url 'home:home' %}">صفحه اصلی</a></li>
-                    <li><a href="{% url 'project:all_projects' %}">پروژه ها</a></li>
+                    <li><a href="{% url 'record:all_records' %}">سوابق</a></li>
                     <li><a href="{% url 'weblog:all_weblogs' %}">وبلاگ ها</a></li>
                     <li><a href="{% url 'tiding:all_tidings' %}">اخبار</a></li>
                     <li><a href="{% url 'about:faq' %}">سوالات متداول</a></li>
-                    <li><a href="{% url 'about:about_us' %}">درباره ما</a></li>
                     <li><a href="{% url 'contact_us:contact_us' %}">تماس با ما</a></li>
                     <li><a href="{% url 'contact_us:complaint' %}">شکایات</a></li>
                     <li><a href="{% url 'admission:form' %}">فرم پذیرش</a></li>

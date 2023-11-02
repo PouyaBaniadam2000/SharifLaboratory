@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'about.apps.AboutConfig',
     'weblog.apps.WeblogConfig',
-    'project.apps.ProjectConfig',
+    'record.apps.RecordConfig',
     'tiding.apps.TidingConfig',
     'account.apps.AccountConfig',
     'contactus.apps.ContactusConfig',

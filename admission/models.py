@@ -12,7 +12,7 @@ class Admission(models.Model):
                                       validators=[validate_landline_phone], help_text="ضروری")
     mobile_phone = models.CharField(max_length=11, help_text="ضروری", verbose_name="شماره تلفن همراه",
                                     validators=[validate_mobile_phone])
-    email = models.EmailField(blank=True, null=True, verbose_name="آدرس ایمیل",
+    email = models.EmailField(verbose_name="آدرس ایمیل",
                               validators=[validate_email])
     request_date = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ درخواست")
     instance_sent_date = models.DateTimeField(auto_now_add=True, editable=False, verbose_name="تاریخ ارسال نمونه")

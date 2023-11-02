@@ -102,12 +102,6 @@ def validate_email(value):
 
 
 def validate_first_name(value):
-    if not value.isalpha():
-        if " " in value:
-            raise ValidationError("نام نمیتواند فاصله داشته باشد.", code="no space allowed")
-        else:
-            raise ValidationError("نام فقط میتواند از حروف تشکیل شود.", code="just letters")
-
     if len(value) < 2:
         raise ValidationError("نام باید حداقل 2 کاراکتر داشته باشد.", code="more than 2 chars")
 

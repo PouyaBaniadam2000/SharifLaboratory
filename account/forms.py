@@ -86,12 +86,6 @@ class RegisterForm(forms.ModelForm):
         if len(password) < 4:
             raise ValidationError("رمز عبور باید حداقل 4 کاراکتر داشته باشد.", code="at least 4 characters")
 
-        if str(password).isnumeric():
-            raise ValidationError("رمز عبور باید باید حداقل 1 حرف انگلیسی داشته باشد.", code="at least 1 letter")
-
-        if str(password).isdigit():
-            raise ValidationError("رمز عبور باید باید حداقل 1 عدد داشته باشد.", code="at least 1 digit")
-
 
 class LoginForm(forms.Form):
     mobile_phone_or_username = forms.CharField(max_length=50, widget=forms.TextInput(
@@ -262,12 +256,6 @@ class ChangePasswordForm(forms.Form):
 
         if len(password_1) < 4:
             raise ValidationError("رمز عبور باید حداقل 4 کاراکتر داشته باشد.", code="at least 4 characters")
-
-        if str(password_1).isnumeric():
-            raise ValidationError("رمز عبور باید باید حداقل 1 حرف انگلیسی داشته باشد.", code="at least 1 letter")
-
-        if str(password_1).isdigit():
-            raise ValidationError("رمز عبور باید باید حداقل 1 عدد داشته باشد.", code="at least 1 digit")
 
         if password_1 != password_2:
             raise ValidationError("رمز عبور ها با یکدیگر همخوانی ندارند!", code="passwords dis-match")

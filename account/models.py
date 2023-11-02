@@ -52,7 +52,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
                                     validators=[validate_mobile_phone], blank=False, null=False)
 
     landline_phone = models.CharField(unique=True, max_length=15, help_text="ضروری", verbose_name="شماره تلفن ثابت",
-                                      validators=[validate_landline_phone], blank=False, null=False)
+                                      validators=[validate_landline_phone], blank=True, null=True)
 
     postal_code = models.CharField(unique=True, max_length=20, help_text="ضروری", verbose_name="کد پستی", blank=False,
                                    null=False)
@@ -60,7 +60,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     address = models.TextField(unique=True, max_length=200, help_text="ضروری", verbose_name="آدرس", blank=False,
                                null=False)
 
-    company_name = models.CharField(max_length=100, help_text="ضروری", verbose_name="نام شرکت", blank=False, null=False)
+    company_name = models.CharField(max_length=100, help_text="ضروری", verbose_name="نام شرکت", blank=True, null=True)
 
     activity_field = models.CharField(max_length=100, verbose_name="حوزه فعالیت", blank=True, null=True)
 
@@ -123,10 +123,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 class OTP(models.Model):
     username = models.CharField(max_length=50, blank=True, null=True, verbose_name="نام کاربری", default="")
     mobile_phone = models.CharField(max_length=11, verbose_name="شماره تلفن همراه")
-    landline_phone = models.CharField(max_length=15, verbose_name="شماره تلفن ثابت")
+    landline_phone = models.CharField(max_length=15, verbose_name="شماره تلفن ثابت", blank=True, null=True)
     postal_code = models.CharField(max_length=20, verbose_name="کد پستی")
     address = models.CharField(max_length=200, verbose_name="آدرس")
-    company_name = models.CharField(max_length=100, verbose_name="نام شرکت")
+    company_name = models.CharField(max_length=100, verbose_name="نام شرکت", blank=True, null=True)
     activity_field = models.CharField(max_length=100, verbose_name="حوزه فعالیت", blank=True, null=True)
     email = models.CharField(max_length=255, verbose_name="آدرس ایمیل")
     first_name = models.CharField(max_length=50, verbose_name="نام")

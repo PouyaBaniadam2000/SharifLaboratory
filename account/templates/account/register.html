@@ -46,6 +46,15 @@
                             <br>
                             <br>
 
+                            {{ form.company_name|attr:"placeholder:نام شرکت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"id:company_name" }}
+                            {% if form.company_name.errors %}
+                                <div style="color:#CC3434;">
+                                    {{ form.company_name.errors }}
+                                </div>
+                            {% endif %}
+                            <br>
+                            <br>
+
                             {{ form.username|attr:"placeholder:* نام کاربری"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
                             {% if form.username.errors %}
                                 <div style="color:#CC3434;">
@@ -73,6 +82,7 @@
                             <br>
                             <br>
 
+
                             {{ form.mobile_phone|attr:"placeholder:* تلفن همراه"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
                             {% if form.mobile_phone.errors %}
                                 <div style="color:#CC3434;">
@@ -82,7 +92,7 @@
                             <br>
                             <br>
 
-                            {{ form.landline_phone|attr:"placeholder:* تلفن ثابت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                            {{ form.landline_phone|attr:"placeholder:تلفن ثابت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
                             {% if form.landline_phone.errors %}
                                 <div style="color:#CC3434;">
                                     {{ form.landline_phone.errors }}
@@ -100,19 +110,10 @@
                             <br>
                             <br>
 
-                            {{ form.company_name|attr:"placeholder:* نام شرکت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"id:company_name" }}
-                            {% if form.company_name.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.company_name.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
-
                             {{ form.activity_field|attr:"placeholder:حوزه فعالیت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"style:display:none;"|attr:"class:activity_field" }}
 
-<div style="height: 50px;">
-</div>
+                            <div style="height: 50px;">
+                            </div>
 
                             {{ form.address|attr:"placeholder:* آدرس"|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm" }}
                             {% if form.address.errors %}

@@ -19,7 +19,7 @@ class Record(models.Model):
     categories = models.ManyToManyField("Category", related_name='weblogs', verbose_name="کتگوری ها", help_text="ضروری")
     location = models.CharField(max_length=100, verbose_name="لوکیشن", help_text="ضروری")
     financial_value = models.CharField(max_length=50, verbose_name="ارزش مالی", help_text="ضروری")
-    date = models.CharField(max_length=100, verbose_name="تاریخ ساخت پروژه", help_text="ضروری")
+    date = models.CharField(max_length=100, verbose_name="تاریخ ساخت سابقه", help_text="ضروری")
     is_allowed = models.BooleanField(default=True, verbose_name="مجوز نشان داده شدن دارد؟")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="ایجاد شده در تاریخ")
     slug = models.SlugField(unique=True, allow_unicode=True, blank=True, null=True, verbose_name="اسلاگ (متن داخل URL)")
@@ -32,8 +32,8 @@ class Record(models.Model):
             f'<a href="{self.image_1.url}"><img style="border-radius: 100%" src="{self.image_1.url}" alt="{self.image_1.name}" width="30px" height="30px"></a>')
 
     class Meta:
-        verbose_name = "پروژه"
-        verbose_name_plural = "پروژه ها"
+        verbose_name = "سابقه"
+        verbose_name_plural = "سوابق"
         ordering = ("-created_at",)
 
 

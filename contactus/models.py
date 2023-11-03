@@ -31,6 +31,7 @@ class Complaint(models.Model):
 
 
 class ContactInfo(models.Model):
+    work_time = models.CharField(max_length=200, verbose_name="ساعت کاری", help_text="ضروری")
     address = models.CharField(max_length=200, verbose_name="آدرس", help_text="ضروری")
     email = models.EmailField(max_length=255, verbose_name="ایمیل", help_text="ضروری")
     mobile_phone = models.CharField(max_length=11, verbose_name="شماره تلفن همراه", help_text="ضروری")

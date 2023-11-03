@@ -1,3 +1,4 @@
+from contactus.models import ContactInfo
 from home.models import GeneralWebsiteIdea
 from laboratory.models import Category
 
@@ -11,3 +12,8 @@ def footer(request):
 def category_menu(request):
     category_objects = Category.objects.all()
     return {"category_objects": category_objects}
+
+
+def header_menu_info(request):
+    contact_us_info = ContactInfo.objects.last()
+    return {"contact_us_info": contact_us_info}

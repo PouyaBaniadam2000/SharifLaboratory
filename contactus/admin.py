@@ -9,8 +9,8 @@ class MessageAdmin(admin.ModelAdmin):
 
 @admin.register(ContactInfo)
 class ContactInfoAdmin(admin.ModelAdmin):
-    list_display = ('address', 'email', 'mobile_phone', 'landline_phone')
-    list_editable = ('email', 'mobile_phone', 'landline_phone')
+    list_display = ('address', 'work_time', 'email', 'mobile_phone', 'landline_phone')
+    list_editable = ('email', 'work_time', 'mobile_phone', 'landline_phone')
 
 
 @admin.register(Complaint)

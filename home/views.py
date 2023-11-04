@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from home.models import GeneralWebsiteIdea, GeneralWebsiteIdeaImage, SharifLabServicePreview, TeamMember, Certificate
@@ -34,19 +35,17 @@ def search_view(request):
         }
         return render(request, 'home/search_result.html', context)
 
-    weblog_results = Weblog.objects.filter(title__icontains=query)
-    tiding_results = Tiding.objects.filter(title__icontains=query)
-    record_results = Record.objects.filter(title__icontains=query)
-    laboratory_results = Laboratory.objects.filter(title__icontains=query)
+    weblog_results = Weblog.objects.filter(Q(title__icontains=query) | Q(body__icontains=query))
+    tiding_results = Tiding.objects.filter(Q(title__icontains=query) | Q(body__icontains=query))
+    record_results = Record.objects.filter(Q(title__icontains=query) | Q(body__icontains=query))
+    laboratory_results = Laboratory.objects.filter(Q(title__icontains=query) | Q(body__icontains=query))
 
-    has_weblog_results = len(weblog_results) > 0
-    has_tiding_results = len(tiding_results) > 0
-    has_record_results = len(record_results) > 0
-    has_laboratory_results = len(laboratory_results) > 0
+    has_weblog_results = weblog_results.exists()
+    has_tiding_results = tiding_results.exists()
+    has_record_results = record_results.exists()
+    has_laboratory_results = laboratory_results.exists()
 
-    has_any_results = (
-            has_weblog_results or has_tiding_results or has_record_results or has_laboratory_results
-    )
+    has_any_results = (has_weblog_results or has_tiding_results or has_record_results or has_laboratory_results)
 
     context = {
         'query': query,

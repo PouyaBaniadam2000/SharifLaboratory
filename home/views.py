@@ -26,6 +26,14 @@ class Home(TemplateView):
 def search_view(request):
     query = request.GET.get('q')
 
+    if not query:
+        error_message = "یک عبارت وارد کنید."
+        context = {
+            'query': query,
+            'error_message': error_message,
+        }
+        return render(request, 'home/search_result.html', context)
+
     weblog_results = Weblog.objects.filter(title__icontains=query)
     tiding_results = Tiding.objects.filter(title__icontains=query)
     record_results = Record.objects.filter(title__icontains=query)

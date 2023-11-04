@@ -5,6 +5,7 @@
 
 {% block content %}
 
+
     <section class="px-4 mb-24">
         <div class="container mx-auto max-w-screen-xl">
             <nav class="flex mb-5 border-y border-orange-200 py-3" aria-label="Breadcrumb">
@@ -26,6 +27,20 @@
                     </li>
                 </ol>
             </nav>
+
+            {% if error_message %}
+                <div class="flex justify-center relative my-16">
+
+                    <h2 style="color: #d34e46" class="font-YekanBakh-ExtraBlack text-3xl">یک عبــــــارت جهت جســــــت و جــــــو وارد کنید. </h2>
+
+                    <div class="absolute -top-6">
+                        <span class="font-YekanBakh-ExtraBlack text-6xl text-opacity-10 text-stone-900">no results found</span>
+                    </div>
+
+                    <div class="bg-orange-200 w-20 h-1.5 rounded-full absolute top-10"></div>
+
+                </div>
+            {% endif %}
 
             {% if has_record_results %}
                 <div class="flex justify-center relative my-16">

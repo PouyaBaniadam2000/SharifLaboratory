@@ -2,216 +2,398 @@
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}">
-    <link rel="stylesheet" href="{% static 'public/build/style.css' %}">
+    <link
+      rel="stylesheet"
+      href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'public/build/style.css' %}" />
     <title>{% block title %} {% endblock %}</title>
-</head>
-<body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
-
-<section class="px-4 static">
-    <div class="container mx-auto max-w-screen-xl">
+  </head>
+  <body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
+    <section class="px-4 static">
+      <div class="container mx-auto max-w-screen-xl">
         <div class="flex justify-between items-center py-6">
-            <div class="lg:hidden leading-none z-10">
-                <div class="drawer">
-                    <input id="my-drawer-4" type="checkbox" class="drawer-toggle"/>
-                    <div class="drawer-content">
-                        <label for="my-drawer-4" class="swap swap-rotate drawer-button">
+          <div class="lg:hidden leading-none z-10">
+            <div class="drawer">
+              <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+              <div class="drawer-content">
+                <label for="my-drawer-4" class="swap swap-rotate drawer-button">
+                  <!-- this hidden checkbox controls the state -->
+                  <input type="checkbox" />
 
-                            <!-- this hidden checkbox controls the state -->
-                            <input type="checkbox"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6 stroke-black swap-off fill-current"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    ></path>
+                  </svg>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="w-6 h-6 stroke-black swap-off fill-current">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-                            </svg>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="w-6 h-6 stroke-black swap-on fill-current">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-
-                        </label>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6 stroke-black swap-on fill-current"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </label>
+              </div>
+              <div
+                class="drawer-side"
+                style="justify-content: center; align-items: center"
+              >
+                <label for="my-drawer-4" class="drawer-overlay"></label>
+                <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                  <div class="drawer-content text-left">
+                    <label
+                      for="my-drawer-4"
+                      class="swap swap-rotate drawer-button"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </label>
+                  </div>
+                  <form
+                    action="{% url 'home:search_view' %}"
+                    method="get"
+                    class="relative"
+                    style="display: flex"
+                  >
+                    <div
+                      class="relative rounded-full border"
+                      style="width: -webkit-fill-available"
+                    >
+                      <button
+                        type="submit"
+                        class="absolute left-0 top-0 h-full p-2"
+                      >
+                        <span class="text-gray-400 text-xl" aria-hidden="true"
+                          >🔍</span
+                        >
+                      </button>
+                      <input
+                        type="search"
+                        id="searchbar"
+                        name="q"
+                        placeholder="جست و جو..."
+                        class="w-48 px-4 py-2 rounded-full border focus:outline-none focus:ring-2 pl-10"
+                        style="width: inherit"
+                      />
                     </div>
-                    <div class="drawer-side" style="
-                    justify-content: center;
-                    align-items: center;
-                    
-                ">
-                        
-                        <label for="my-drawer-4" class="drawer-overlay"></label>
-                        <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                            <div class="drawer-content text-left">
-                                <label for="my-drawer-4" class="swap swap-rotate drawer-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                                    </svg>
-                                </label>
-                            </div>
-                            <form action="{% url 'home:search_view' %}" method="get" class="relative" style="
-                            display: flex;
-                        " >
-                                <div class="relative rounded-full border" style="
-                                width: -webkit-fill-available;
-                            ">
-                                    <button type="submit" class="absolute left-0 top-0 h-full p-2">
-                                        <span class="text-gray-400 text-xl" aria-hidden="true">🔍</span>
-                                    </button>
-                                    <input type="search" id="searchbar" name="q" placeholder="جست و جو..."
-                                           class="w-48 px-4 py-2 rounded-full border focus:outline-none focus:ring-2 pl-10" style="
-                                           width: inherit;
-                                       ">
-                                </div>
-                            </form> 
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'home:home' %}">خانه</a></li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'admission:form' %}">فرم پذیرش</a></li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'admission:form' %}">آزمایشگاه</a></li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'record:all_records' %}">سابقه</a>
-                            </li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'weblog:all_weblogs' %}">وبلاگ</a>
-                            </li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'tiding:all_tidings' %}">خبر</a>
-                            </li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'about:faq' %}">سوالات
-                                متداول</a></li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'contact_us:contact_us' %}">تماس</a></li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'contact_us:complaint' %}">شکایت</a></li>
-                            <li><p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p></li>
-                        </ul>
-                        
-                    </div>
-                </div>
+                  </form>
+                  <li>
+                    <a
+                      class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                      href="{% url 'home:home' %}"
+                      >خانه</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                      href="{% url 'admission:form' %}"
+                      >فرم پذیرش</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                      href="{% url 'admission:form' %}"
+                      >آزمایشگاه</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                      href="{% url 'record:all_records' %}"
+                      >سابقه</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                      href="{% url 'weblog:all_weblogs' %}"
+                      >وبلاگ</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                      href="{% url 'tiding:all_tidings' %}"
+                      >خبر</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                      href="{% url 'about:faq' %}"
+                      >سوالات متداول</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                      href="{% url 'contact_us:contact_us' %}"
+                      >تماس</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                      href="{% url 'contact_us:complaint' %}"
+                      >شکایت</a
+                    >
+                  </li>
+                  <li>
+                    <p style="color: #d34e46">
+                      ساعت کاری: {{ contact_us_info.work_time }}
+                    </p>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="flex items-center gap-8">
-                <div style="
+          </div>
+          <div class="flex items-center gap-8">
+            <div
+              style="
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-            ">
-                    <a href=""><img src="{% static 'assets/images/logo-dark.png' %}" alt=""></a>
-                    <div> آزمایشگاه پیشرفته <br> خواص مواد شریف </div>
-                </div>
-                <div class="hidden lg:block" >
-                    <form action="{% url 'home:search_view' %}" method="get" class="relative"  style="
-                    display: flex;
-                ">
-                        <div class="relative rounded-full border" style="
-                        width: -webkit-fill-available;
-                    ">
-                            <button type="submit" class="absolute left-0 top-0 h-full p-2">
-                                <span class="text-gray-400 text-xl" aria-hidden="true">🔍</span>
-                            </button>
-                            <input type="search" id="searchbar" name="q" placeholder="جست و جو..."
-                                   class="w-48 px-4 py-2 rounded-full border focus:outline-none focus:ring-2 pl-10" style="
-                                   width: inherit;
-                               ">
-                        </div>
-                    </form> <br>
-                    <ul class="flex gap-x-8 mt-12">
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'home:home' %}">خانه</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'admission:form' %}">فرم پذیرش</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'admission:form' %}">آزمایشگاه</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'record:all_records' %}">سابقه</a>
-                        </li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'weblog:all_weblogs' %}">وبلاگ</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'tiding:all_tidings' %}">خبر</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'about:faq' %}">سوالات</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'contact_us:complaint' %}">شکایت</a></li>
-                        {#                        <li><p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p></li>#}
-                    </ul>
-                   
-                </div>
-                
+              "
+            >
+              <a href=""
+                ><img src="{% static 'assets/images/logo-dark.png' %}" alt=""
+              /></a>
+              <div>
+                آزمایشگاه پیشرفته <br />
+                خواص مواد شریف
+              </div>
             </div>
-
-             
-
-
-            {% if request.user.is_authenticated %}
-                <div class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
-                    <a href="{% url 'account:logout' %}?next={{ request.get_full_path }}"
-                       class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">خروج</a>
+            <div class="hidden lg:block">
+              <form
+                action="{% url 'home:search_view' %}"
+                method="get"
+                class="relative"
+                style="display: flex"
+              >
+                <div
+                  class="relative rounded-full border"
+                  style="width: -webkit-fill-available"
+                >
+                  <button
+                    type="submit"
+                    class="absolute left-0 top-0 h-full p-2"
+                  >
+                    <span class="text-gray-400 text-xl" aria-hidden="true"
+                      >🔍</span
+                    >
+                  </button>
+                  <input
+                    type="search"
+                    id="searchbar"
+                    name="q"
+                    placeholder="جست و جو..."
+                    class="w-48 px-4 py-2 rounded-full border focus:outline-none focus:ring-2 pl-10"
+                    style="width: inherit"
+                  />
                 </div>
+              </form>
+              <br />
+              <ul class="flex gap-x-8 mt-12">
+                <li>
+                  <a
+                    class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                    href="{% url 'home:home' %}"
+                    >خانه</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                    href="{% url 'admission:form' %}"
+                    >فرم پذیرش</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                    href="{% url 'admission:form' %}"
+                    >آزمایشگاه</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                    href="{% url 'record:all_records' %}"
+                    >سابقه</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                    href="{% url 'weblog:all_weblogs' %}"
+                    >وبلاگ</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                    href="{% url 'tiding:all_tidings' %}"
+                    >خبر</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                    href="{% url 'about:faq' %}"
+                    >سوالات</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                    href="{% url 'contact_us:complaint' %}"
+                    >شکایت</a
+                  >
+                </li>
+                <li>
+                  <p style="color: #d34e46">
+                    ساعت کاری: {{ contact_us_info.work_time }}
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-            {% else %}
-                <div class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
-                    <a href="{% url 'account:login' %}" class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">ورود</a>
-                </div>
-            {% endif %}
+          {% if request.user.is_authenticated %}
+          <div
+            class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full"
+          >
+            <a
+              href="{% url 'account:logout' %}?next={{ request.get_full_path }}"
+              class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular"
+              >خروج</a
+            >
+          </div>
 
+          {% else %}
+          <div
+            class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full"
+          >
+            <a
+              href="{% url 'account:login' %}"
+              class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular"
+              >ورود</a
+            >
+          </div>
+          {% endif %}
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-{% block content %}
+    {% block content %} {% endblock %}
 
-{% endblock %}
-
-
-<footer class="p-10 bg-stone-800 text-white">
-    <button id="to-top-button" onclick="goToTop()" title="Go To Top"
-            class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full bg-stone-900 hover:bg-orange-200 text-orange-200 hover:text-stone-900 duration-300">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-             class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"/>
+    <footer class="p-10 bg-stone-800 text-white">
+      <button
+        id="to-top-button"
+        onclick="goToTop()"
+        title="Go To Top"
+        class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full bg-stone-900 hover:bg-orange-200 text-orange-200 hover:text-stone-900 duration-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
+          />
         </svg>
         <span class="sr-only">Go to top</span>
-    </button>
-    <div class="container mx-auto max-w-screen-xl">
+      </button>
+      <div class="container mx-auto max-w-screen-xl">
         <div class="grid grid-cols-12 gap-4 leading-8">
-            <div class="col-span-12 lg:col-span-5">
-                <img class="mb-4" src="{% static 'assets/images/logo-light.png' %}" alt="">
-                <p>{{ footer_general_website_idea.body }}</p>
+          <div class="col-span-12 lg:col-span-5">
+            <img
+              class="mb-4"
+              src="{% static 'assets/images/logo-light.png' %}"
+              alt=""
+            />
+            <p>{{ footer_general_website_idea.body }}</p>
+          </div>
+          <div
+            class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-2 text-right md:text-center"
+          >
+            <h3 class="font-IRANSansWeb_Bold text-white mb-4 text-base">
+              دسترسی سریع
+            </h3>
+            <ul>
+              <li><a href="{% url 'home:home' %}">خانه</a></li>
+              <li><a href="{% url 'admission:form' %}">فرم پذیرش</a></li>
+              <li><a href="{% url 'admission:form' %}">آزمایشگاه</a></li>
+              <li><a href="{% url 'record:all_records' %}">سابقه</a></li>
+              <li><a href="{% url 'weblog:all_weblogs' %}">وبلاگ</a></li>
+              <li><a href="{% url 'tiding:all_tidings' %}">خبر</a></li>
+              <li><a href="{% url 'about:faq' %}">سوالات</a></li>
+              <li><a href="{% url 'contact_us:contact_us' %}">تماس</a></li>
+              <li><a href="{% url 'contact_us:complaint' %}">شکایت</a></li>
+              <li>
+                <p style="color: #d34e46">
+                  ساعت کاری: {{ contact_us_info.work_time }}
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="col-span-12 md:col-span-4 lg:col-span-3">
+            <div class="flex items-center">
+              <img src="{% static 'assets/images/enamad_logo.png' %}" alt="" />
+              <img
+                src="{% static 'assets/images/samandehi_logo.png' %}"
+                alt=""
+              />
             </div>
-            <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-2 text-right md:text-center">
-                <h3 class="font-IRANSansWeb_Bold text-white mb-4 text-base">دسترسی سریع</h3>
-                <ul>
-                    <li><a href="{% url 'home:home' %}">خانه</a></li>
-                    <li><a href="{% url 'admission:form' %}">فرم پذیرش</a></li>
-                    <li><a href="{% url 'admission:form' %}">آزمایشگاه</a></li>
-                    <li><a href="{% url 'record:all_records' %}">سابقه</a></li>
-                    <li><a href="{% url 'weblog:all_weblogs' %}">وبلاگ</a></li>
-                    <li><a href="{% url 'tiding:all_tidings' %}">خبر</a></li>
-                    <li><a href="{% url 'about:faq' %}">سوالات</a></li>
-                    <li><a href="{% url 'contact_us:contact_us' %}">تماس</a></li>
-                    <li><a href="{% url 'contact_us:complaint' %}">شکایت</a></li>
-                    <li><p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p></li>
-                </ul>
-            </div>
-            <div class="col-span-12 md:col-span-4 lg:col-span-3">
-                <div class="flex items-center">
-                    <img src="{% static 'assets/images/enamad_logo.png' %}" alt="">
-                    <img src="{% static 'assets/images/samandehi_logo.png' %}" alt="">
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
-</footer>
+      </div>
+    </footer>
 
-<script src="{% static 'node_modules/swiper/swiper-bundle.min.js' %}"></script>
-<script src="{% static 'src/js/main.js' %}"></script>
-</body>
+    <script src="{% static 'node_modules/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'src/js/main.js' %}"></script>
+  </body>
 </html>

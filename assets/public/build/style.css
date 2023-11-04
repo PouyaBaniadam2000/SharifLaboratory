@@ -2172,9 +2172,9 @@ details.collapse summary::-webkit-details-marker{
   --tw-border-opacity: 1;
   border-color: rgb(254 215 170 / var(--tw-border-opacity));
 }
-.bg-\[\#f5f1e4\]{
+.bg-\[\#fafafa\]{
   --tw-bg-opacity: 1;
-  background-color: rgb(245 241 228 / var(--tw-bg-opacity));
+  background-color: rgb(220 220 220 / var(--tw-bg-opacity));
 }
 .bg-base-200{
   --tw-bg-opacity: 1;
@@ -2234,8 +2234,8 @@ details.collapse summary::-webkit-details-marker{
   --tw-gradient-to: rgb(0 0 0 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), transparent var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
-.to-\[\#f5f1e4\]{
-  --tw-gradient-to: #f5f1e4 var(--tw-gradient-to-position);
+.to-\[\#fafafa\]{
+  --tw-gradient-to: #fafafa var(--tw-gradient-to-position);
 }
 .to-transparent{
   --tw-gradient-to: transparent var(--tw-gradient-to-position);

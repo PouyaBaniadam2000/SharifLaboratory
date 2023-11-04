@@ -5,12 +5,35 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <link
-            rel="stylesheet"
-            href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}"
-    />
+    <link rel="stylesheet" href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'public/build/style.css' %}"/>
+    <style>
+        /* Additional custom styles */
+        .sub-menu {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 100%;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        li:hover .sub-menu {
+            display: block;
+        }
+
+        .sub-menu:hover .category {
+            display: block;
+        }
+
+        .category {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
@@ -27,10 +50,8 @@
 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="w-6 h-6 stroke-black swap-off fill-current">
-                                <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                                 ></path>
                             </svg>
 
@@ -44,9 +65,7 @@
                         <label for="my-drawer-4" class="drawer-overlay"></label>
                         <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
                             <div class="drawer-content text-left">
-                                <label
-                                        for="my-drawer-4"
-                                        class="swap swap-rotate drawer-button">
+                                <label for="my-drawer-4" class="swap swap-rotate drawer-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                          stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
@@ -63,8 +82,7 @@
                                     </button>
                                     <input type="search" id="searchbar" name="q" placeholder="جست و جو..."
                                            class="w-48 px-4 py-2 rounded-full border focus:outline-none focus:ring-2 pl-10"
-                                           style="width: inherit"
-                                    />
+                                           style="width: inherit"/>
                                 </div>
                             </form>
                             <li>
@@ -136,6 +154,7 @@
                         </div>
                     </form>
                     <br/>
+
                     <ul class="flex gap-x-8 mt-12">
                         <li>
                             <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
@@ -145,9 +164,28 @@
                             <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                href="{% url 'admission:form' %}">فرم پذیرش</a>
                         </li>
-                        <li>
-                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'admission:form' %}">آزمایشگاه</a>
+                        <li class="relative group">
+                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300 category" href="#">آزمایشگاه</a>
+                            <!-- Subcategories for "آزمایشگاه" -->
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="#">Subcategory 1</a>
+                                </li>
+                                <li class="relative group">
+                                    <a class="category" href="#">Subcategory 2 with a very long</a>
+                                    <!-- Sub-subcategories for "Subcategory 2" -->
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="#">Sub-subcategory 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Sub-subcategory 2</a>
+                                        </li>
+                                        <!-- Add more sub-subcategories as needed -->
+                                    </ul>
+                                </li>
+                                <!-- Add more subcategories as needed -->
+                            </ul>
                         </li>
                         <li>
                             <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
@@ -179,6 +217,7 @@
                             </p>
                         </li>
                     </ul>
+
                 </div>
             </div>
 
@@ -206,9 +245,10 @@
             class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full bg-stone-900 hover:bg-orange-200 text-orange-200 hover:text-stone-900 duration-300">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
              class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
-            />
+
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"/>
         </svg>
+
         <span class="sr-only">Go to top</span>
     </button>
     <div class="container mx-auto max-w-screen-xl">
@@ -216,6 +256,7 @@
             <div class="col-span-12 lg:col-span-5">
                 <img class="mb-4" src="{% static 'assets/images/logo-light.png' %}" alt=""/>
                 <p>{{ footer_general_website_idea.body }}</p>
+
             </div>
             <div
                     class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-2 text-right md:text-center">
@@ -242,14 +283,10 @@
             <div class="col-span-12 md:col-span-4 lg:col-span-3">
                 <div class="flex items-center">
                     <img src="{% static 'assets/images/enamad_logo.png' %}" alt=""/>
-                    <img
-                            src="{% static 'assets/images/samandehi_logo.png' %}"
-                            alt=""
-                    />
+                    <img src="{% static 'assets/images/samandehi_logo.png' %}" alt=""/>
                 </div>
             </div>
         </div>
-    </div>
 </footer>
 
 <script src="{% static 'node_modules/swiper/swiper-bundle.min.js' %}"></script>

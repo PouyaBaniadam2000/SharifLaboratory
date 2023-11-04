@@ -44,6 +44,10 @@ def search_view(request):
     has_record_results = len(record_results) > 0
     has_laboratory_results = len(laboratory_results) > 0
 
+    has_any_results = (
+            has_weblog_results or has_tiding_results or has_record_results or has_laboratory_results
+    )
+
     context = {
         'query': query,
         'weblog_results': weblog_results,
@@ -54,6 +58,7 @@ def search_view(request):
         'has_tiding_results': has_tiding_results,
         'has_record_results': has_record_results,
         'has_laboratory_results': has_laboratory_results,
+        'has_any_results': has_any_results,
     }
 
     return render(request, 'home/search_result.html', context)

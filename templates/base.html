@@ -80,7 +80,7 @@
                     <a href=""><img src="{% static 'assets/images/logo-dark.png' %}" alt=""></a>
                 </div>
                 <div class="hidden lg:block">
-                    <ul class="flex gap-x-8">
+                    <ul class="flex gap-x-8 mt-12">
                         <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                href="{% url 'home:home' %}">خانه</a></li>
                         <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
@@ -97,13 +97,23 @@
                         <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                href="{% url 'about:faq' %}">سوالات</a></li>
                         <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'contact_us:contact_us' %}"></a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                href="{% url 'contact_us:complaint' %}">شکایت</a></li>
-                        <li><p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p></li>
+                        {#                        <li><p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p></li>#}
                     </ul>
+
                 </div>
             </div>
+
+            <form action="{% url 'home:search_view' %}" method="get" class="relative" style="max-height: 50px;">
+                <div class="relative rounded-full border">
+                    <button type="submit" class="absolute left-0 top-0 h-full p-2">
+                        <span class="text-gray-400 text-xl" aria-hidden="true">🔍</span>
+                    </button>
+                    <input type="search" id="searchbar" name="q" placeholder="جست و جو..."
+                           class="w-48 px-4 py-2 rounded-full border focus:outline-none focus:ring-2 pl-10">
+                </div>
+            </form>
+
 
             {% if request.user.is_authenticated %}
                 <div class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
@@ -113,8 +123,7 @@
 
             {% else %}
                 <div class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
-                    <a href="{% url 'account:login' %}" class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">ورود
-                        | ثبت نام</a>
+                    <a href="{% url 'account:login' %}" class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">ورود</a>
                 </div>
             {% endif %}
 

@@ -55,6 +55,9 @@
                             <br>
                             <br>
 
+                            {{ form.activity_field|attr:"placeholder:حوزه فعالیت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"style:display:none;"|attr:"id:activity_field" }}
+
+
                             {{ form.username|attr:"placeholder:* نام کاربری"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
                             {% if form.username.errors %}
                                 <div style="color:#CC3434;">
@@ -110,11 +113,6 @@
                             <br>
                             <br>
 
-                            {{ form.activity_field|attr:"placeholder:حوزه فعالیت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"style:display:none;"|attr:"class:activity_field" }}
-
-                            <div style="height: 50px;">
-                            </div>
-
                             {{ form.address|attr:"placeholder:* آدرس"|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm" }}
                             {% if form.address.errors %}
                                 <div style="color:#CC3434;">
@@ -166,15 +164,16 @@
 
 <script>
     document.getElementById("company_name").addEventListener("click", function () {
-        var activityField = document.querySelector(".activity_field");
-        activityField.forEach(element => {
-            if (activityField.style.display === "none") {
-                activityField.style.display = "block";
-            } else {
-                activityField.style.display = "none";
-            }
-        });
-
+        var activityField = document.getElementById("activity_field");
+        if (activityField.style.display === "none" || activityField.style.display === "") {
+            activityField.style.display = "block";
+        } else {
+            activityField.style.display = "none";
+        }
+        var lineBreak1 = document.createElement("br");
+        var lineBreak2 = document.createElement("br");
+        document.getElementById(".activity_field").appendChild(lineBreak1);
+        document.getElementById(".activity_field").appendChild(lineBreak2);
     });
 </script>
 

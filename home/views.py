@@ -1,5 +1,7 @@
+from django.shortcuts import render
 from django.views.generic import TemplateView
 from home.models import GeneralWebsiteIdea, GeneralWebsiteIdeaImage, SharifLabServicePreview, TeamMember, Certificate
+from laboratory.models import Laboratory
 from record.models import Record
 from tiding.models import Tiding
 from weblog.models import Weblog
@@ -19,3 +21,31 @@ class Home(TemplateView):
         context["certificates"] = Certificate.objects.all()
 
         return context
+
+
+def search_view(request):
+    query = request.GET.get('q')
+
+    weblog_results = Weblog.objects.filter(title__icontains=query)
+    tiding_results = Tiding.objects.filter(title__icontains=query)
+    record_results = Record.objects.filter(title__icontains=query)
+    laboratory_results = Laboratory.objects.filter(title__icontains=query)
+
+    has_weblog_results = len(weblog_results) > 0
+    has_tiding_results = len(tiding_results) > 0
+    has_record_results = len(record_results) > 0
+    has_laboratory_results = len(laboratory_results) > 0
+
+    context = {
+        'query': query,
+        'weblog_results': weblog_results,
+        'tiding_results': tiding_results,
+        'record_results': record_results,
+        'laboratory_results': laboratory_results,
+        'has_weblog_results': has_weblog_results,
+        'has_tiding_results': has_tiding_results,
+        'has_record_results': has_record_results,
+        'has_laboratory_results': has_laboratory_results,
+    }
+
+    return render(request, 'home/search_result.html', context)

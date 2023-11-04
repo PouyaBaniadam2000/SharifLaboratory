@@ -1872,6 +1872,9 @@ details.collapse summary::-webkit-details-marker{
 .mt-8{
   margin-top: 2rem;
 }
+.mt-12{
+  margin-top: 4rem;
+}
 .inline-block{
   display: inline-block;
 }

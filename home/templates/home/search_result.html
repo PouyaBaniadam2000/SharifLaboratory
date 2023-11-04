@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} جست و جو {% endblock %}
+
+{% block content %}
+
+    <section class="px-4 mb-24">
+        <div class="container mx-auto max-w-screen-xl">
+            <nav class="flex mb-5 border-y border-orange-200 py-3" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-2">
+                    <li class="inline-flex items-center">
+                        <a href="{% url 'home:home' %}" class="inline-flex items-center">
+                            خانه
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                 stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
+                            </svg>
+
+                            <a href="" class="mr-1 text-sm font-medium">نتیجه جست و جو</a>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            {% if has_record_results %}
+                <div class="flex justify-center relative my-16">
+
+                    <h2 class="font-YekanBakh-ExtraBlack text-3xl">نــــــــتــــــــیــــــــجه سوابــــــــق</h2>
+
+                    <div class="absolute -top-6">
+                        <span class="font-YekanBakh-ExtraBlack text-6xl text-opacity-10 text-stone-900">record results</span>
+                    </div>
+
+                    <div class="bg-orange-200 w-20 h-1.5 rounded-full absolute top-10"></div>
+
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+
+                    {% for result in record_results %}
+                        <a href="{% url 'record:record_detail' result.slug %}"
+                           class="group relative flex justify-center h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-72">
+                            <img src="{{ result.image_1.url }}" loading="lazy" alt="Photo by Minh Pham"
+                                 class="absolute inset-0 h-full w-full object-cover object-center transition duration-300 group-hover:scale-110"/>
+                            <div
+                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
+                            </div>
+
+                            <span class="relative mb-4 flex justify-center text-base text-white text-center">{{ result.title }}</span>
+                        </a>
+                    {% endfor %}
+
+                </div>
+            {% endif %}
+
+            {% if has_weblog_results %}
+                <div class="flex justify-center relative my-16">
+
+                    <h2 class="font-YekanBakh-ExtraBlack text-3xl">نــــــــتــــــــیــــــــجه وبـــــــــلاگ
+                        هـــــــا</h2>
+
+                    <div class="absolute -top-6">
+                        <span class="font-YekanBakh-ExtraBlack text-6xl text-opacity-10 text-stone-900">weblog results</span>
+                    </div>
+
+                    <div class="bg-orange-200 w-20 h-1.5 rounded-full absolute top-10"></div>
+
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                    {% for result in weblog_results %}
+                        <div class="bg-white overflow-hidden rounded-3xl leading-8 transform hover:-translate-y-1 duration-300 transition-transform">
+                            <div class="p-6">
+                                <div class="flex items-center mb-4 border-b border-dashed pb-4">
+                                    <div class="avatar ml-2">
+                                        <div class="w-14 rounded-full">
+
+                                            {% if result.author.image %}
+                                                <img src="{{ result.author.image.url }}"/>
+                                            {% else %}
+                                                <img src="{% static 'assets/images/profile.png' %}"/>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col mt-1">
+                                        <h3 class="font-YekanBakh-Bold text-slate-800 text-sm mb-2">{{ result.author.get_full_name }}</h3>
+                                        <p class="text-xs">{{ result.actual_jalali_date }}</p>
+                                    </div>
+                                </div>
+                                <div class="leading-8">
+                                    <div class="flex items-center mb-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24"
+                                             fill="none">
+                                            <path d="M13.98 5.31999L10.77 8.52999L8.79999 10.49C7.96999 11.32 7.96999 12.67 8.79999 13.5L13.98 18.68C14.66 19.36 15.82 18.87 15.82 17.92V12.31V6.07999C15.82 5.11999 14.66 4.63999 13.98 5.31999Z"
+                                                  fill="#b9a158"/>
+                                        </svg>
+                                        <a href="{% url 'weblog:weblog_detail' result.slug %}"><h2
+                                                class="font-YekanBakh-ExtraBold text-base mr-1">
+                                            {{ result.title }}</h2></a>
+                                    </div>
+                                    <a href="{% url 'weblog:weblog_detail' result.slug %}">
+                                        <p>{{ result.body|truncatewords:15|safe }}</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="{% url 'weblog:weblog_detail' result.slug %}"><img class="rounded-b-lg"
+                                                                                            src="{{ result.image.url }}"
+                                                                                            alt="{{ result.title }}"></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if has_tiding_results %}
+                <div class="flex justify-center relative my-16">
+
+                    <h2 class="font-YekanBakh-ExtraBlack text-3xl">نــــــــتــــــــیــــــــجه اخبـــــــــــــار</h2>
+
+                    <div class="absolute -top-6">
+                        <span class="font-YekanBakh-ExtraBlack text-6xl text-opacity-10 text-stone-900">tiding results</span>
+                    </div>
+
+                    <div class="bg-orange-200 w-20 h-1.5 rounded-full absolute top-10"></div>
+
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+
+                    {% for result in tiding_results %}
+                        <!-- image - start -->
+                        <a href="{% url 'tiding:tiding_detail' result.slug %}"
+                           class="group relative flex justify-center h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-72">
+                            <img src="{{ result.image_1.url }}" loading="lazy" alt="Photo by Minh Pham"
+                                 class="absolute inset-0 h-full w-full object-cover object-center transition duration-300 group-hover:scale-110"/>
+
+                            <div
+                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
+                            </div>
+
+                            <span class="relative mb-4 flex justify-center text-base text-white text-center">{{ result.title }}</span>
+                        </a>
+                        <!-- image - end -->
+                    {% endfor %}
+
+                </div>
+            {% endif %}
+
+
+        </div>
+    </section>
+
+{% endblock %}

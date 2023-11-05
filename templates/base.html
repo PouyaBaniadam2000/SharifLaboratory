@@ -9,82 +9,162 @@
     <link rel="stylesheet" href="{% static 'public/build/style.css' %}"/>
     <style>
         /* Additional custom styles */
-        .sub-menu {
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 100%;
-            background: white;
-            border: 1px solid #ccc;
-            padding: 20px;
-        }
 
-        li:hover .sub-menu {
-            display: block;
-        }
-
-        .sub-menu:hover .category {
-            display: block;
-        }
-
-        .category {
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
     </style>
     <title>{% block title %} {% endblock %}</title>
 </head>
-<body class="font-YekanBakh-Regular text-sm bg-[#fafafa]">
-<section class="px-4 static">
-    <div class="container mx-auto max-w-screen-xl">
-        <div class="flex justify-between items-center py-6">
-            <div class="lg:hidden leading-none z-10">
-                <div class="drawer">
-                    <input id="my-drawer-4" type="checkbox" class="drawer-toggle"/>
-                    <div class="drawer-content">
-                        <label for="my-drawer-4" class="swap swap-rotate drawer-button">
-                            <!-- this hidden checkbox controls the state -->
-                            <input type="checkbox"/>
+<body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
+<header>
+    <section class="px-4 static">
+        <div class="container mx-auto max-w-screen-xl">
+            <div class="flex justify-between items-center py-6">
+                <div class="lg:hidden leading-none z-10">
+                    <div class="drawer">
+                        <input id="my-drawer-4" type="checkbox" class="drawer-toggle"/>
+                        <div class="drawer-content">
+                            <label for="my-drawer-4" class="swap swap-rotate drawer-button">
+                                <!-- this hidden checkbox controls the state -->
+                                <input type="checkbox"/>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="w-6 h-6 stroke-black swap-off fill-current">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                                ></path>
-                            </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5"
+                                     stroke="currentColor" class="w-6 h-6 stroke-black swap-off fill-current">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                                    ></path>
+                                </svg>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="w-6 h-6 stroke-black swap-on fill-current">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-                        </label>
-                    </div>
-                    <div class="drawer-side" style="justify-content: center; align-items: center">
-                        <label for="my-drawer-4" class="drawer-overlay"></label>
-                        <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                            <div class="drawer-content text-left">
-                                <label for="my-drawer-4" class="swap swap-rotate drawer-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                                    </svg>
-                                </label>
-                            </div>
-                            <form action="{% url 'home:search_view' %}" method="get" class="relative"
-                                  style="display: flex">
-                                <div class="relative rounded-full border" style="width: -webkit-fill-available">
-                                    <button
-                                            type="submit"
-                                            class="absolute left-0 top-0 h-full p-2">
-                                        <span class="text-gray-400 text-xl" aria-hidden="true">🔍</span>
-                                    </button>
-                                    <input type="search" id="searchbar" name="q" placeholder="جست و جو..."
-                                           class="w-48 px-4 py-2 rounded-full border focus:outline-none focus:ring-2 pl-10"
-                                           style="width: inherit"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5"
+                                     stroke="currentColor" class="w-6 h-6 stroke-black swap-on fill-current">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </label>
+                        </div>
+                        <div class="drawer-side" style="justify-content: center; align-items: center">
+                            <label for="my-drawer-4" class="drawer-overlay"></label>
+                            <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                                <div class="drawer-content text-left">
+                                    <label for="my-drawer-4" class="swap swap-rotate drawer-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </label>
                                 </div>
-                            </form>
+                                <form action="{% url 'home:search_view' %}" method="get" class="relative"
+                                      style="display: flex">
+                                    <div class="relative rounded-full border" style="width: -webkit-fill-available">
+                                        <button
+                                                type="submit"
+                                                class="absolute left-0 top-0 h-full p-2">
+                                            <span class="text-gray-400 text-xl" aria-hidden="true">🔍</span>
+                                        </button>
+                                        <input type="search" id="searchbar" name="q" placeholder="جست و جو..."
+                                               class="w-48 px-4 py-2 rounded-full border focus:outline-none focus:ring-2 pl-10"
+                                               style="width: inherit"/>
+                                    </div>
+                                </form>
+                                <li>
+                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'home:home' %}">خانه</a>
+                                </li>
+                                <li>
+                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'admission:form' %}">فرم پذیرش</a>
+                                </li>
+                                <li>
+                                    <details>
+                                        <summary>
+                                            تست
+                                        </summary>
+                                        <ul class="p-2 bg-base-100" style="background-color: #f2f2f2;">
+                                            <li>
+                                                <details>
+                                                    <summary>
+                                                        تست
+                                                    </summary>
+                                                    <ul class="p-2 bg-base-100" style="background-color: #f2f2f2;">
+                                                        <li>
+                                                            <details>
+                                                                <summary>
+                                                                    تست
+                                                                </summary>
+                                                                <ul class="p-2 bg-base-100"
+                                                                    style="background-color: #f2f2f2;">
+                                                                    <li><a> تست ۱</a></li>
+                                                                    <li><a> تست ۲</a></li>
+                                                                </ul>
+                                                            </details>
+                                                        </li>
+                                                        <li><a> تست ۲</a></li>
+                                                    </ul>
+                                                </details>
+                                            </li>
+                                            <li><a> تست ۲</a></li>
+                                        </ul>
+                                    </details>
+                                </li>
+                                <li>
+                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'record:all_records' %}">سابقه</a>
+                                </li>
+                                <li>
+                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'weblog:all_weblogs' %}">وبلاگ</a>
+                                </li>
+                                <li>
+                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'tiding:all_tidings' %}">خبر</a>
+                                </li>
+                                <li>
+                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'about:faq' %}">سوالات</a>
+                                </li>
+                                <li>
+                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'contact_us:contact_us' %}">تماس</a>
+                                </li>
+                                <li>
+                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'contact_us:complaint' %}">شکایت</a>
+                                </li>
+                                <li>
+                                    <p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-8">
+                    <div style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+              ">
+                        <a href=""><img src="{% static 'assets/images/logo-dark.png' %}" alt=""/></a>
+                        <div>
+                            آزمایشگاه پیشرفته <br/>
+                            خواص مواد شریف
+                        </div>
+                    </div>
+                    <div class="hidden lg:block">
+                        <form action="{% url 'home:search_view' %}" method="get" class="relative" style="display: flex">
+                            <div
+                                    class="relative rounded-full border"
+                                    style="width: -webkit-fill-available">
+                                <button type="submit" class="absolute left-0 top-0 h-full p-2">
+                                    <span class="text-gray-400 text-xl" aria-hidden="true">🔍</span></button>
+                                <input type="search" id="searchbar" name="q" placeholder="جست و جو..."
+                                       class="w-48 px-4 py-2 rounded-full border focus:outline-none focus:ring-2 pl-10"
+                                       style="width: inherit"/>
+                            </div>
+                        </form>
+                        <br/>
+
+                        <ul class="flex gap-x-8 mt-12 navigation">
                             <li>
                                 <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                    href="{% url 'home:home' %}">خانه</a>
@@ -93,10 +173,36 @@
                                 <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                    href="{% url 'admission:form' %}">فرم پذیرش</a>
                             </li>
-                            <li>
-                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'admission:form' %}">آزمایشگاه</a>
+                            <li class="relative">
+                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300 category" href="#">آزمایشگاه</a>
+                                <!-- Subcategories for "آزمایشگاه" -->
+                                <ul class="sub-menu sub-menu-1">
+                                    <li class="li-sub-menu li-sub-menu">
+                                        <a href="#">Subcategory 1</a>
+                                    </li>
+                                    <li class="relative group li-sub-menu li-sub-menu-1">
+                                        <a class="category" href="#">Subcategory 2 with a very long</a>
+                                        <!-- Sub-subcategories for "Subcategory 2" -->
+                                        <ul class="sub-menu sub-menu-2">
+                                            <li class="li-sub-menu li-sub-menu-2">
+                                                <a href="#">Sub-subcategory 1</a>
+                                            </li>
+                                            <li class="li-sub-menu li-sub-menu-2">
+                                                <a href="#">Sub-subcategory 2 dfzgdfg sdgdfh fgh sdg</a>
+                                                <ul class="sub-menu sub-menu-3">
+                                                    <li class="li-sub-menu li-sub-menu-3"> <!-- Add this container -->
+                                                        <a href="#">sub-3-1</a>
+                                                    </li>
+                                                    <li class="li-sub-menu li-sub-menu-3"> <!-- Add this container -->
+                                                        <a href="#">sub-3-2</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </li>
+
                             <li>
                                 <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                    href="{% url 'record:all_records' %}">سابقه</a>
@@ -122,121 +228,32 @@
                                    href="{% url 'contact_us:complaint' %}">شکایت</a>
                             </li>
                             <li>
-                                <p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p>
+                                <p style="color: #d34e46">
+                                    ساعت کاری: {{ contact_us_info.work_time }}
+                                </p>
                             </li>
                         </ul>
+
                     </div>
                 </div>
-            </div>
-            <div class="flex items-center gap-8">
-                <div style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-              ">
-                    <a href=""><img src="{% static 'assets/images/logo-dark.png' %}" alt=""/></a>
-                    <div>
-                        آزمایشگاه پیشرفته <br/>
-                        خواص مواد شریف
+
+                {% if request.user.is_authenticated %}
+                    <div
+                            class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
+                        <a href="{% url 'account:logout' %}?next={{ request.get_full_path }}"
+                           class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">خروج</a>
                     </div>
-                </div>
-                <div class="hidden lg:block">
-                    <form action="{% url 'home:search_view' %}" method="get" class="relative" style="display: flex">
-                        <div
-                                class="relative rounded-full border"
-                                style="width: -webkit-fill-available">
-                            <button type="submit" class="absolute left-0 top-0 h-full p-2">
-                                <span class="text-gray-400 text-xl" aria-hidden="true">🔍</span></button>
-                            <input type="search" id="searchbar" name="q" placeholder="جست و جو..."
-                                   class="w-48 px-4 py-2 rounded-full border focus:outline-none focus:ring-2 pl-10"
-                                   style="width: inherit"/>
-                        </div>
-                    </form>
-                    <br/>
 
-                    <ul class="flex gap-x-8 mt-12">
-                        <li>
-                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'home:home' %}">خانه</a>
-                        </li>
-                        <li>
-                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'admission:form' %}">فرم پذیرش</a>
-                        </li>
-                        <li class="relative group">
-                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300 category" href="#">آزمایشگاه</a>
-                            <!-- Subcategories for "آزمایشگاه" -->
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="#">Subcategory 1</a>
-                                </li>
-                                <li class="relative group">
-                                    <a class="category" href="#">Subcategory 2 with a very long</a>
-                                    <!-- Sub-subcategories for "Subcategory 2" -->
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="#">Sub-subcategory 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Sub-subcategory 2</a>
-                                        </li>
-                                        <!-- Add more sub-subcategories as needed -->
-                                    </ul>
-                                </li>
-                                <!-- Add more subcategories as needed -->
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'record:all_records' %}">سابقه</a>
-                        </li>
-                        <li>
-                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'weblog:all_weblogs' %}">وبلاگ</a>
-                        </li>
-                        <li>
-                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'tiding:all_tidings' %}">خبر</a>
-                        </li>
-                        <li>
-                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'about:faq' %}">سوالات</a>
-                        </li>
-                        <li>
-                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'contact_us:contact_us' %}">تماس</a>
-                        </li>
-                        <li>
-                            <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="{% url 'contact_us:complaint' %}">شکایت</a>
-                        </li>
-                        <li>
-                            <p style="color: #d34e46">
-                                ساعت کاری: {{ contact_us_info.work_time }}
-                            </p>
-                        </li>
-                    </ul>
-
-                </div>
+                {% else %}
+                    <div class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
+                        <a href="{% url 'account:login' %}"
+                           class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">ورود</a>
+                    </div>
+                {% endif %}
             </div>
-
-            {% if request.user.is_authenticated %}
-            <div
-                    class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
-                <a href="{% url 'account:logout' %}?next={{ request.get_full_path }}"
-                   class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">خروج</a>
-            </div>
-
-            {% else %}
-            <div class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
-                <a href="{% url 'account:login' %}"
-                   class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">ورود</a>
-            </div>
-            {% endif %}
         </div>
-    </div>
-</section>
+    </section>
+</header>
 
 {% block content %} {% endblock %}
 

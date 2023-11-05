@@ -1,11 +1,10 @@
 from django.urls import path, re_path
 from . import views
 
-app_name = "product"
+app_name = "laboratory"
 
 urlpatterns = [
-    path("products", views.AllLaboratory.as_view(), name="all_products"),
-    re_path(r'products/(?P<slug>[-\w]+)', views.LaboratoryDetail.as_view(), name="product_detail"),
-    path('category/<int:category_id>/', views.CategoryLaboratoryListView.as_view(), name='category_products'),
+    path("list", views.LaboratoryListView.as_view(), name="all_laboratories"),
+    re_path(r'(?P<slug>[-\w]+)', views.LaboratoryDetailView.as_view(), name="laboratory_detail"),
 
 ]

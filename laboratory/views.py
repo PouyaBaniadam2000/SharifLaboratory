@@ -1,27 +1,33 @@
-from django.views.generic import DetailView, ListView
+from django.views.generic import ListView, DetailView
+from laboratory.mixins import IsAllowedMixin
+from laboratory.models import Laboratory
 
-from laboratory.models import Category, Laboratory
 
-
-class AllLaboratory(ListView):
+class LaboratoryListView(ListView):
     model = Laboratory
-
-
-class LaboratoryDetail(DetailView):
-    model = Laboratory
-
-
-class CategoryLaboratoryListView(ListView):
-    model = Category
-    template_name = 'laboratory/laboratory_list.html'
+    queryset = Laboratory.objects.filter(is_allowed=True)
 
     def get_queryset(self):
-        category_id = self.kwargs.get('category_id')
-        category = Category.objects.get(pk=category_id)
-        return Laboratory.objects.filter(category=category)
+        category = self.request.GET.get('category')
+        if category:
+            return Laboratory.objects.filter(categories__category=category, is_allowed=True)
+
+        return Laboratory.objects.filter(is_allowed=True)
+
+
+class LaboratoryDetailView(IsAllowedMixin, DetailView):
+    model = Laboratory
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        category_id = self.kwargs.get('category_id')
-        context['category'] = Category.objects.get(pk=category_id)
+
+        current_laboratory = self.object
+        next_laboratory = Laboratory.objects.filter(id__gt=current_laboratory.id).order_by('id').first()
+        previous_laboratory = Laboratory.objects.filter(id__lt=current_laboratory.id).order_by('-id').first()
+
+        context['next_laboratory'] = next_laboratory
+        context['previous_laboratory'] = previous_laboratory
+
         return context

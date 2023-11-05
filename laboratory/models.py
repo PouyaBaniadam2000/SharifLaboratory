@@ -1,23 +1,13 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.html import format_html
-from django.utils.text import slugify
-
-class Category(models.Model):
-    name = models.CharField(max_length=100, verbose_name="نام")
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, verbose_name="والد")
-
-    class Meta:
-        verbose_name = "دسته بندی"
-        verbose_name_plural = "دسته بندی ها"
-
-    def __str__(self):
-        return self.name
 
 
 class Laboratory(models.Model):
     title = models.CharField(max_length=50, verbose_name="تیتر", help_text="ضروری")
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="دسته‌بندی محصول")
+    # parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, verbose_name="والد")
+    has_parent = models.BooleanField(default=False, verbose_name="والد دارد؟", help_text="ضروری")
+    has_child = models.BooleanField(default=False, verbose_name="فرزند دارد؟", help_text="ضروری")
     record_preview = models.CharField(max_length=200, verbose_name="درباره سابقه", help_text="ضروری")
     image_1 = models.ImageField(upload_to="laboratory/laboratory/images", verbose_name="تصویر 1", help_text="ضروری")
     image_2 = models.ImageField(upload_to="laboratory/laboratory/images", verbose_name="تصویر 2", help_text="ضروری")

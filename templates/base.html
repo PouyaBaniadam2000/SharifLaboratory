@@ -77,32 +77,37 @@
                                 <li>
                                     <details>
                                         <summary>
-                                            تست
+                                            <a href="{% url 'laboratory:all_laboratories' %}">آزمایشگاه</a>
                                         </summary>
                                         <ul class="p-2 bg-base-100" style="background-color: #f2f2f2;">
                                             <li>
                                                 <details>
                                                     <summary>
-                                                        تست
+                                                        <a href="">متالورژی</a>
                                                     </summary>
                                                     <ul class="p-2 bg-base-100" style="background-color: #f2f2f2;">
+                                                        <li><a>کوانتومتری</a></li>
+                                                        <li><a>متالوگرافی</a></li>
+                                                        <li><a>خوردگی</a></li>
+                                                        <li><a>میکروسکوپ الکترونی</a></li>
+                                                        <li><a>آزمون های پرتابل</a></li>
                                                         <li>
                                                             <details>
                                                                 <summary>
-                                                                    تست
+                                                                    خواص مکانیکی
                                                                 </summary>
                                                                 <ul class="p-2 bg-base-100"
                                                                     style="background-color: #f2f2f2;">
-                                                                    <li><a> تست ۱</a></li>
-                                                                    <li><a> تست ۲</a></li>
+                                                                    <li><a>کشش-فشار-خمش</a></li>
+                                                                    <li><a>ضربه شارپی</a></li>
+                                                                    <li><a>سختی سنجی</a></li>
                                                                 </ul>
                                                             </details>
                                                         </li>
-                                                        <li><a> تست ۲</a></li>
                                                     </ul>
                                                 </details>
                                             </li>
-                                            <li><a> تست ۲</a></li>
+                                            <li><a>سامانه های الکترونیکی و هوشمند</a></li>
                                         </ul>
                                     </details>
                                 </li>
@@ -173,33 +178,50 @@
                                 <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                    href="{% url 'admission:form' %}">فرم پذیرش</a>
                             </li>
+
                             <li class="relative">
-                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300 category" href="#">آزمایشگاه</a>
-                                <!-- Subcategories for "آزمایشگاه" -->
+                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300 category" href="{% url 'laboratory:all_laboratories' %}">آزمایشگاه</a>
                                 <ul class="sub-menu sub-menu-1">
-                                    <li class="li-sub-menu li-sub-menu">
-                                        <a href="#">Subcategory 1</a>
-                                    </li>
                                     <li class="relative group li-sub-menu li-sub-menu-1">
-                                        <a class="category" href="#">Subcategory 2 with a very long</a>
-                                        <!-- Sub-subcategories for "Subcategory 2" -->
+                                        <a class="category" href="">متالورژی <span style="color: #d34e46">></span></a>
                                         <ul class="sub-menu sub-menu-2">
                                             <li class="li-sub-menu li-sub-menu-2">
-                                                <a href="#">Sub-subcategory 1</a>
+                                                <a href="#">کوانتومتری</a>
                                             </li>
                                             <li class="li-sub-menu li-sub-menu-2">
-                                                <a href="#">Sub-subcategory 2 dfzgdfg sdgdfh fgh sdg</a>
+                                                <a href="#">متالوگرافی</a>
+                                            </li>
+                                            <li class="li-sub-menu li-sub-menu-2">
+                                                <a href="#">خوردگی</a>
+                                            </li>
+                                            <li class="li-sub-menu li-sub-menu-2">
+                                                <a href="#">میکروسکوپ الکترونی</a>
+                                            </li>
+                                            <li class="li-sub-menu li-sub-menu-2">
+                                                <a href="#">آزمون های پرتابل</a>
+                                            </li>
+
+                                            <li class="li-sub-menu li-sub-menu-2">
+                                                <a href="#">خواص مکانیکی <span style="color: #d34e46">></span></a>
                                                 <ul class="sub-menu sub-menu-3">
                                                     <li class="li-sub-menu li-sub-menu-3"> <!-- Add this container -->
-                                                        <a href="#">sub-3-1</a>
+                                                        <a href="#">کشش-فشار-خمش</a>
                                                     </li>
                                                     <li class="li-sub-menu li-sub-menu-3"> <!-- Add this container -->
-                                                        <a href="#">sub-3-2</a>
+                                                        <a href="#">ضربه شارپی</a>
+                                                    </li>
+                                                    <li class="li-sub-menu li-sub-menu-3"> <!-- Add this container -->
+                                                        <a href="#">سختی سنجی</a>
                                                     </li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
+
+                                    <li class="li-sub-menu li-sub-menu">
+                                        <a href="#">سامانه های الکترونیکی و هوشمند</a>
+                                    </li>
+
                                 </ul>
                             </li>
 
@@ -283,7 +305,7 @@
                 <ul>
                     <li><a href="{% url 'home:home' %}">خانه</a></li>
                     <li><a href="{% url 'admission:form' %}">فرم پذیرش</a></li>
-                    <li><a href="{% url 'admission:form' %}">آزمایشگاه</a></li>
+                    <li><a href="{% url 'laboratory:all_laboratories' %}">آزمایشگاه</a></li>
                     <li><a href="{% url 'record:all_records' %}">سابقه</a></li>
                     <li><a href="{% url 'weblog:all_weblogs' %}">وبلاگ</a></li>
                     <li><a href="{% url 'tiding:all_tidings' %}">خبر</a></li>
@@ -297,13 +319,21 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-span-12 md:col-span-4 lg:col-span-3">
-                <div class="flex items-center">
-                    <img src="{% static 'assets/images/enamad_logo.png' %}" alt=""/>
-                    <img src="{% static 'assets/images/samandehi_logo.png' %}" alt=""/>
-                </div>
+            <div class="lg:w-2/3 md:w-1/2 rounded-3xl overflow-hidden sm:mr-10 p-10 hidden md:flex items-end justify-start relative">
+                <iframe width="500px" height="400px" class="absolute inset-0" frameborder="0" title="map"
+                        marginheight="0"
+                        marginwidth="0" scrolling="no"
+                        src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+                        style="filter: grayscale(1) contrast(1.2) opacity(0.4);"></iframe>
+
+                {#            <div class="col-span-12 md:col-span-4 lg:col-span-3">#}
+                {#                <div class="flex items-center">#}
+                {#                    <img src="{% static 'assets/images/enamad_logo.png' %}" alt=""/>#}
+                {#                    <img src="{% static 'assets/images/samandehi_logo.png' %}" alt=""/>#}
+                {#                </div>#}
+                {#            </div>#}
             </div>
-        </div>
+
 </footer>
 
 <script src="{% static 'node_modules/swiper/swiper-bundle.min.js' %}"></script>

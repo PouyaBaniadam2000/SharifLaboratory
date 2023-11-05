@@ -744,6 +744,26 @@ html {
     grid-row-start: 1;
 }
 
+/*.drawer-side {*/
+/*    pointer-events: none;*/
+/*    position: fixed;*/
+/*    right: 0px;*/
+/*    top: 0px;*/
+/*    grid-column-start: 1;*/
+/*    grid-row-start: 1;*/
+/*    display: grid;*/
+/*    width: 100%;*/
+/*    grid-template-columns: repeat(1, minmax(0, 1fr));*/
+/*    grid-template-rows: repeat(1, minmax(0, 1fr));*/
+/*    align-items: flex-start;*/
+/*    justify-items: start;*/
+/*    overflow-y: auto;*/
+/*    overscroll-behavior: contain;*/
+/*    height: 100vh;*/
+/*    height: 100dvh;*/
+/*    scrollbar-width: none;*/
+/*}*/
+
 .drawer-side {
     pointer-events: none;
     position: fixed;
@@ -760,9 +780,9 @@ html {
     overflow-y: auto;
     overscroll-behavior: contain;
     height: 100vh;
-    height: 100dvh;
     scrollbar-width: none;
 }
+
 
 .drawer-side::-webkit-scrollbar {
     display: none;
@@ -3417,6 +3437,7 @@ input[type="checkbox"]:checked
     border: 1px solid #ccc;
     z-index: 2;
     border-radius: 10px;
+    width: 240px;
 }
 
 .sub-menu-1 {
@@ -3424,12 +3445,11 @@ input[type="checkbox"]:checked
     position: absolute;
     top: 100%;
     right: 0;
-
 }
 
 .sub-menu-2 {
     display: none;
-    width: 300px;
+    width: 180px;
 }
 
 .sub-menu-3 {
@@ -3452,7 +3472,7 @@ li:hover .sub-menu-1 {
 }
 
 .li-sub-menu-2 {
-    position: relative; /* Add this line */
+    position: relative;
 }
 
 

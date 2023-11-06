@@ -16,6 +16,7 @@ class GeneralWebsiteIdea(models.Model):
 
 
 class GeneralWebsiteIdeaImage(models.Model):
+    title = models.CharField(max_length=100, verbose_name="تیتر (نمایش داده نمی شود.)", help_text="ضروری")
     image = models.ImageField(upload_to="home/general website idea image/images", verbose_name="تصویر",
                               help_text="ضروری")
 

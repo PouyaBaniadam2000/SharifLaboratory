@@ -9,7 +9,7 @@ class GeneralWebsiteIdeaAdmin(admin.ModelAdmin):
 
 @admin.register(GeneralWebsiteIdeaImage)
 class GeneralWebsiteIdeaImageAdmin(admin.ModelAdmin):
-    list_display = ('display_image',)
+    list_display = ('title', 'display_image',)
 
     def display_image(self, obj):
         return obj.show_image()

@@ -1,183 +1,36 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}">
-    <link rel="stylesheet" href="{% static 'public/build/style.css' %}">
-    <title>404</title>
-</head>
-<body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
 
-<section class="px-4 static">
-    <div class="container mx-auto max-w-screen-xl">
-        <div class="flex justify-between items-center py-6">
-            <div class="lg:hidden leading-none z-10">
-                <div class="drawer">
-                    <input id="my-drawer-4" type="checkbox" class="drawer-toggle"/>
-                    <div class="drawer-content">
-                        <label for="my-drawer-4" class="swap swap-rotate drawer-button">
+{% block title %} 404 {% endblock %}
 
-                            <!-- this hidden checkbox controls the state -->
-                            <input type="checkbox"/>
-
+{% block content %}
+    <section class="px-4 mb-24">
+        <div class="container mx-auto max-w-screen-xl">
+            <nav class="flex mb-5 border-y border-orange-200 py-3" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-2">
+                    <li class="inline-flex items-center">
+                        <a href="{% url 'home:home' %}" class="inline-flex items-center">
+                            خانه
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="w-6 h-6 stroke-black swap-off fill-current">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                                 stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
                             </svg>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="w-6 h-6 stroke-black swap-on fill-current">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-
-                        </label>
-                    </div>
-                    <div class="drawer-side">
-                        <label for="my-drawer-4" class="drawer-overlay"></label>
-                        <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                            <div class="drawer-content text-left">
-                                <label for="my-drawer-4" class="swap swap-rotate drawer-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                                    </svg>
-                                </label>
-                            </div>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" href="index.html">صفحه
-                                اصلی</a></li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="services.html">خدمات</a></li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" href="project.html">پروژه</a>
-                            </li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" href="faq.html">سوالات
-                                متداول</a></li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" href="blog.html">وبلاگ</a>
-                            </li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="about-us.html">درباره ما</a></li>
-                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="contact-us.html">تماس با ما</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-center gap-8">
-                <div>
-                    <a href="{% url 'home:home' %}"><img src="{% static 'assets/images/logo.png' %}" alt=""></a>
-                </div>
-                <div class="hidden lg:block">
-                    <ul class="flex gap-x-8">
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" href="index.html">صفحه
-                            اصلی</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" href="services.html">خدمات</a>
-                        </li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" href="project.html">پروژه</a>
-                        </li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" href="faq.html">سوالات
-                            متداول</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                               href="blog.html">وبلاگ</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" href="about-us.html">درباره
-                            ما</a></li>
-                        <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300" href="contact-us.html">تماس
-                            با ما</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
-                <a href="{% url 'account:login' %}" class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">ورود |
-                    ثبت نام</a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section class="px-4 mb-24">
-    <div class="container mx-auto max-w-screen-xl">
-        <nav class="flex mb-5 border-y border-orange-200 py-3" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-2">
-                <li class="inline-flex items-center">
-                    <a href="#" class="inline-flex items-center">
-                        خانه
-                    </a>
-                </li>
-                <li>
-                    <div class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
-                        </svg>
-
-                        <a href="#" class="mr-1 text-sm font-medium">404</a>
-                    </div>
-                </li>
-            </ol>
-        </nav>
-        <div class="container mx-auto max-w-screen-md text-center leading-10">
-            <img class="w-3/4 mb-8 mx-auto" src="../assets/images/404.png" alt="">
-            <p class="text-xl mb-4">صفحه مورد نظر شما یافت نشد!!</p>
-            <a class="bg-stone-800 text-white hover:bg-orange-200 hover:text-stone-900 duration-300 py-2.5 px-6 rounded-full"
-               href="index.html">بازگشت به صفحه اصلی</a>
-        </div>
-    </div>
-</section>
-
-<footer class="p-10 bg-stone-800 text-white">
-    <button id="to-top-button" onclick="goToTop()" title="Go To Top"
-            class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full bg-stone-900 hover:bg-orange-200 text-orange-200 hover:text-stone-900 duration-300">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-             class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"/>
-        </svg>
-
-        <span class="sr-only">Go to top</span>
-    </button>
-    <div class="container mx-auto max-w-screen-xl">
-        <div class="grid grid-cols-12 gap-4 leading-8">
-            <div class="col-span-12 lg:col-span-5">
-                <img class="mb-4" src="../assets/images/logo-footer.png" alt="">
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و
-                    متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
-                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و
-                    آینده است.</p>
-            </div>
-            <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-2 text-right md:text-center">
-                <h3 class="font-IRANSansWeb_Bold text-white mb-4 text-base">دسترسی سریع</h3>
-                <ul>
-                    <li><a href="index.html">صفحه اصلی</a></li>
-                    <li><a href="about-us.html">درباره ما</a></li>
-                    <li><a href="contact-us.html">تماس با ما</a></li>
-                    <li><a href="project.html">پروژه ها</a></li>
-                    <li><a href="services.html">خدمات ما</a></li>
-                </ul>
-            </div>
-            <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-2 text-right md:text-center">
-                <h3 class="font-IRANSansWeb_Bold text-white mb-4 text-base">خدمات شرکت</h3>
-                <ul>
-                    <li><a href="single-page.html">جزئیات وبلاگ</a></li>
-                    <li><a href="single-project.html">جزئیات پروژه</a></li>
-                    <li><a href="manager.html">مدیران</a></li>
-                    <li><a href="faq.html">سوالات متداول</a></li>
-                    <li><a href="404.html">404</a></li>
-                </ul>
-            </div>
-            <div class="col-span-12 md:col-span-4 lg:col-span-3">
-                <h3 class="font-IRANSansWeb_Bold text-white mb-4 text-base">عضویت در خبرنامه</h3>
-                <div class="flex items-center">
-                    <img src="{% static 'assets/images/enamad_logo.png' %}" alt="">
-                    <img src="{% static 'assets/images/samandehi_logo.png' %}" alt="">
-                </div>
+                            <a href="#" class="mr-1 text-sm font-medium">404</a>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+            <div class="container mx-auto max-w-screen-md text-center leading-10">
+                <img class="w-3/4 mb-8 mx-auto" src="{% static 'assets/images/404.png' %}" alt="">
+                <p class="text-xl mb-4">صفحه مورد نظر شما یافت نشد!!</p>
+                <a class="bg-stone-800 text-white hover:bg-orange-200 hover:text-stone-900 duration-300 py-2.5 px-6 rounded-full"
+                   href="{% url 'home:home' %}">بازگشت به صفحه اصلی</a>
             </div>
         </div>
-    </div>
-</footer>
-
-
-<script src="{% static 'node_modules/swiper/swiper-bundle.min.js' %}"></script>
-<script src="{% static 'src/js/main.js' %}"></script>
-</body>
-</html>
+    </section>
+{% endblock %}

@@ -52,9 +52,9 @@ class SharifLabServicePreview(models.Model):
 
 
 class TeamMember(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name="نام و نام خانوادگی", help_text="ضروری")
-    role = models.CharField(max_length=100, unique=True, verbose_name="نقش", help_text="ضروری")
-    about = models.TextField(max_length=1000, unique=True, verbose_name="درباره", help_text="ضروری")
+    name = models.CharField(max_length=100, verbose_name="نام و نام خانوادگی", help_text="ضروری")
+    role = models.CharField(max_length=100, verbose_name="نقش", help_text="ضروری")
+    about = models.TextField(max_length=1000, verbose_name="درباره", help_text="ضروری")
     image = models.ImageField(upload_to="home/team member/images", verbose_name="تصویر", help_text="ضروری")
 
     def __str__(self):

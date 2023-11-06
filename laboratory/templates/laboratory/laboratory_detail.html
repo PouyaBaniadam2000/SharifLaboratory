@@ -134,7 +134,7 @@
 
                 {% for category in laboratory.categories.all %}
                     <div style="background: #CC3434; border-radius: 100px; display: inline-block; margin-bottom: 50px">
-                        <a href="{% url 'laboratory:all_laboratorys' %}?category={{ category.category }}">
+                        <a href="{% url 'laboratory:all_laboratories' %}?category={{ category.category }}">
                             <p style="padding: 10px">#{{ category.category }}</p>
                         </a>
                     </div>

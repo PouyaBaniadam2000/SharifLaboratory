@@ -56,7 +56,13 @@
                             <br>
 
                             {{ form.activity_field|attr:"placeholder:حوزه فعالیت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"style:display:none;"|attr:"id:activity_field" }}
-
+                            {% if form.activity_field.errors %}
+                                <div style="color:#CC3434;">
+                                    {{ form.activity_field.errors }}
+                                </div>
+                            {% endif %}
+                            <br>
+                            <br>
 
                             {{ form.username|attr:"placeholder:* نام کاربری"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
                             {% if form.username.errors %}

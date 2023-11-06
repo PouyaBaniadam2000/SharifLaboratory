@@ -100,8 +100,13 @@
                                     {{ form.test_name.errors }}
                                 </div>
                             {% endif %}
-                            <br>
-                            <br>
+
+                            <p style="margin-top: -2px;" class="mt-6 text-xs text-gray-600 text-center leading-8">
+                                نام آزمون را نمی‌دانید؟
+                                <a style="color: whitesmoke" href="{% static 'assets/files/test_names.pdf' %}" download="true" class="border-b border-gray-500 border-dotted">
+                                    فرم را دانلود کنید.
+                                </a>
+                            </p>
 
                             {{ form.instance_details|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm"|attr:"placeholder:* مشخصات نمونه" }}
                             {% if form.instance_details.errors %}

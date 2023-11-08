@@ -23,27 +23,29 @@
                         <input id="my-drawer-4" type="checkbox" class="drawer-toggle"/>
                         <div class="drawer-content">
                             <label for="my-drawer-4" class="swap swap-rotate drawer-button">
+
                                 <!-- this hidden checkbox controls the state -->
                                 <input type="checkbox"/>
 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                     stroke-width="1.5"
-                                     stroke="currentColor" class="w-6 h-6 stroke-black swap-off fill-current">
+                                     stroke-width="1.5" stroke="currentColor"
+                                     class="w-6 h-6 stroke-black swap-off fill-current">
                                     <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                                    ></path>
+                                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                                 </svg>
 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                     stroke-width="1.5"
-                                     stroke="currentColor" class="w-6 h-6 stroke-black swap-on fill-current">
+                                     stroke-width="1.5" stroke="currentColor"
+                                     class="w-6 h-6 stroke-black swap-on fill-current">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
                                 </svg>
+
                             </label>
                         </div>
-                        <div class="drawer-side" style="justify-content: center; align-items: center">
+                        <div class="drawer-side" style=" overflow: scroll;">
                             <label for="my-drawer-4" class="drawer-overlay"></label>
-                            <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                            <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content"
+                                style="overflow-y: scroll; width: 370px;">
                                 <div class="drawer-content text-left">
                                     <label for="my-drawer-4" class="swap swap-rotate drawer-button">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -66,75 +68,74 @@
                                                style="width: inherit"/>
                                     </div>
                                 </form>
-                                <li>
-                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                       href="{% url 'home:home' %}">خانه</a>
-                                </li>
-                                <li>
-                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                       href="{% url 'admission:form' %}">فرم پذیرش</a>
-                                </li>
+                                <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'home:home' %}">خانه</a></li>
+                                <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'admission:form' %}">فرم پذیرش</a></li>
                                 <li>
                                     <details>
                                         <summary>
-                                            <a href="{% url 'laboratory:all_laboratories' %}">آزمایشگاه</a>
+                                            <a href="{% url 'laboratory:all_laboratories' %}">آزمایشگاه
+                                            </a>
                                         </summary>
-                                        <ul class="p-2 bg-base-100" style="background-color: #f2f2f2;">
+                                        <ul class="p-2 z-10 w-48 bg-[#f5f1e4] m-0">
                                             <li>
                                                 <details>
                                                     <summary>
-                                                        <a href="">متالورژی</a>
+                                                        متالوژی
                                                     </summary>
-                                                    <ul class="p-2 bg-base-100" style="background-color: #f2f2f2;">
-                                                        <li><a href="https://shariflab.pythonanywhere.com/laboratory/کوانتومتری">کوانتومتری</a></li>
-                                                        <li><a href="https://shariflab.pythonanywhere.com/laboratory/متالوگرافی">متالوگرافی</a></li>
-                                                        <li><a href="https://shariflab.pythonanywhere.com/laboratory/خوردگی">خوردگی</a></li>
-                                                        <li><a href="https://shariflab.pythonanywhere.com/laboratory/میکروسکوپ-الکترونی">میکروسکوپ الکترونی</a></li>
-                                                        <li><a href="https://shariflab.pythonanywhere.com/laboratory/آزمون-های-پرتابل">آزمون های پرتابل</a></li>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="https://shariflab.pythonanywhere.com/laboratory/کوانتومتری">کوانتومتری</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://shariflab.pythonanywhere.com/laboratory/متالوگرافی">متالوگرافی</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://shariflab.pythonanywhere.com/laboratory/خوردگی">خوردگی</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://shariflab.pythonanywhere.com/laboratory/میکروسکوپ-الکترونی">میکروسکوپ
+                                                                الکترونی</a></li>
+                                                        <li>
+                                                            <a href="https://shariflab.pythonanywhere.com/laboratory/آزمون-های-پرتابل">آزمون
+                                                                های پرتابل</a></li>
                                                         <li>
                                                             <details>
                                                                 <summary>
                                                                     خواص مکانیکی
                                                                 </summary>
-                                                                <ul class="p-2 bg-base-100"
-                                                                    style="background-color: #f2f2f2;">
-                                                                    <li><a href="https://shariflab.pythonanywhere.com/laboratory/کشش-فشار-خمش">کشش-فشار-خمش</a></li>
-                                                                    <li><a href="https://shariflab.pythonanywhere.com/laboratory/ضربه-شارپی">ضربه شارپی</a></li>
-                                                                    <li><a href="https://shariflab.pythonanywhere.com/laboratory/سختی-سنجی">سختی سنجی</a></li>
+                                                                <ul>
+                                                                    <li>
+                                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/کشش-فشار-خمش">کشش-فشار-خمش</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/ضربه-شارپی">ضربه
+                                                                            شارپی</a></li>
+                                                                    <li>
+                                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/سختی-سنجی">سختی
+                                                                            سنجی</a></li>
                                                                 </ul>
                                                             </details>
                                                         </li>
                                                     </ul>
                                                 </details>
                                             </li>
-{#                                            <li><a>سامانه های الکترونیکی و هوشمند</a></li>#}
                                         </ul>
                                     </details>
                                 </li>
-                                <li>
-                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                       href="{% url 'record:all_records' %}">سابقه</a>
-                                </li>
-                                <li>
-                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                       href="{% url 'weblog:all_weblogs' %}">وبلاگ</a>
-                                </li>
-                                <li>
-                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                       href="{% url 'tiding:all_tidings' %}">خبر</a>
-                                </li>
-                                <li>
-                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                       href="{% url 'about:faq' %}">سوالات</a>
-                                </li>
-{#                                <li>#}
-{#                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"#}
-{#                                       href="{% url 'contact_us:contact_us' %}">تماس</a>#}
-{#                                </li>#}
-                                <li>
-                                    <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                       href="{% url 'contact_us:complaint' %}">شکایت</a>
-                                </li>
+                                <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'record:all_records' %}">سابقه</a></li>
+                                <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'weblog:all_weblogs' %}">وبلاگ</a></li>
+                                <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'tiding:all_tidings' %}">خبر</a></li>
+                                <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'about:faq' %}">سوالات</a></li>
+                                <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'contact_us:contact_us' %}">تماس با ما</a></li>
+                                <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                       href="{% url 'contact_us:complaint' %}">شکایت</a></li>
                                 <li>
                                     <p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p>
                                 </li>
@@ -143,13 +144,10 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-8">
-                    <div style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-              ">
-                        <a href=""><img src="{% static 'assets/images/logo-dark.png' %}" alt=""/></a>
+                    <div>
+                        <a href="{% url 'home:home' %}"><img style="margin-right: 15px"
+                                                             src="{% static 'assets/images/logo-dark.png' %}"
+                                                             alt=""></a>
                         <div>
                             آزمایشگاه پیشرفته <br/>
                             خواص مواد شریف
@@ -168,115 +166,87 @@
                             </div>
                         </form>
                         <br/>
-
-                        <ul class="flex gap-x-8 mt-12 navigation">
+                        <ul class="flex menu lg:menu-horizontal">
+                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                   href="{% url 'home:home' %}">خانه</a></li>
+                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                   href="{% url 'admission:form' %}">فرم پذیرش</a></li>
                             <li>
-                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'home:home' %}">خانه</a>
-                            </li>
-                            <li>
-                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'admission:form' %}">فرم پذیرش</a>
-                            </li>
-
-                            <li class="relative">
-                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300 category"
-                                   href="{% url 'laboratory:all_laboratories' %}">آزمایشگاه</a>
-                                <ul class="sub-menu sub-menu-1">
-                                    <li class="relative group li-sub-menu li-sub-menu-1">
-                                        <a class="category" href="#">متالورژی <span style="color: #d34e46">></span></a>
-                                        <ul class="sub-menu sub-menu-2">
-                                            <li class="li-sub-menu li-sub-menu-2">
-                                                <a href="https://shariflab.pythonanywhere.com/laboratory/کوانتومتری">کوانتومتری</a>
-                                            </li>
-                                            <li class="li-sub-menu li-sub-menu-2">
-                                                <a href="https://shariflab.pythonanywhere.com/laboratory/متالوگرافی">متالوگرافی</a>
-                                            </li>
-                                            <li class="li-sub-menu li-sub-menu-2">
-                                                <a href="https://shariflab.pythonanywhere.com/laboratory/خوردگی">خوردگی</a>
-                                            </li>
-                                            <li class="li-sub-menu li-sub-menu-2">
-                                                <a href="https://shariflab.pythonanywhere.com/laboratory/میکروسکوپ-الکترونی">میکروسکوپ
-                                                    الکترونی</a>
-                                            </li>
-                                            <li class="li-sub-menu li-sub-menu-2">
-                                                <a href="https://shariflab.pythonanywhere.com/laboratory/آزمون-های-پرتابل">آزمون
-                                                    های پرتابل</a>
-                                            </li>
-
-                                            <li class="li-sub-menu li-sub-menu-2">
-                                                <a href="#">خواص مکانیکی <span style="color: #d34e46">></span></a>
-                                                <ul class="sub-menu sub-menu-3">
-                                                    <li class="li-sub-menu li-sub-menu-3">
-                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/کشش-فشار-خمش">کشش-فشار-خمش</a>
+                                <details>
+                                    <summary>
+                                        <a href="{% url 'laboratory:all_laboratories' %}">آزمایشگاه</a>
+                                    </summary>
+                                    <ul class="p-2 z-10 w-48 bg-[#f5f1e4] m-0">
+                                        <li>
+                                            <details>
+                                                <summary>متالوژی</summary>
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/کوانتومتری">کوانتومتری</a>
                                                     </li>
-                                                    <li class="li-sub-menu li-sub-menu-3">
-                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/ضربه-شارپی">ضربه
-                                                            شارپی</a>
+                                                    <li>
+                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/متالوگرافی">متالوگرافی</a>
                                                     </li>
-                                                    <li class="li-sub-menu li-sub-menu-3">
-                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/سختی-سنجی">سختی
-                                                            سنجی</a>
+                                                    <li>
+                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/خوردگی">خوردگی</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/میکروسکوپ-الکترونی">میکروسکوپ
+                                                            الکترونی</a></li>
+                                                    <li>
+                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/آزمون-های-پرتابل">آزمون
+                                                            های پرتابل</a></li>
+                                                    <li>
+                                                    <li>
+                                                        <details>
+                                                            <summary>خواص مکانیکی</summary>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="https://shariflab.pythonanywhere.com/laboratory/کشش-فشار-خمش">کشش-فشار-خمش</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="https://shariflab.pythonanywhere.com/laboratory/ضربه-شارپی">ضربه
+                                                                        شارپی</a></li>
+                                                                <li>
+                                                                    <a href="https://shariflab.pythonanywhere.com/laboratory/سختی-سنجی">سختی
+                                                                        سنجی</a></li>
+                                                            </ul>
+                                                        </details>
                                                     </li>
                                                 </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-{#                                    <li class="li-sub-menu li-sub-menu">#}
-{#                                        <a href="#">سامانه های الکترونیکی و هوشمند</a>#}
-{#                                    </li>#}
-
-                                </ul>
+                                            </details>
+                                        </li>
+                                    </ul>
+                                </details>
                             </li>
-
-                            <li>
-                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                    href="{% url 'record:all_records' %}">سابقه</a>
                             </li>
+                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                   href="{% url 'weblog:all_weblogs' %}">وبلاگ</a></li>
+                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                   href="{% url 'tiding:all_tidings' %}">خبر</a></li>
+                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                   href="{% url 'about:faq' %}">سوالات</a></li>
+                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                   href="{% url 'contact_us:contact_us' %}">تماس با ما</a></li>
+                            <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
+                                   href="{% url 'contact_us:complaint' %}">شکایت</a></li>
                             <li>
-                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'weblog:all_weblogs' %}">وبلاگ</a>
-                            </li>
-                            <li>
-                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'tiding:all_tidings' %}">خبر</a>
-                            </li>
-                            <li>
-                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'about:faq' %}">سوالات</a>
-                            </li>
-{#                            <li>#}
-{#                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"#}
-{#                                   href="{% url 'contact_us:contact_us' %}">تماس</a>#}
-{#                            </li>#}
-                            <li>
-                                <a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
-                                   href="{% url 'contact_us:complaint' %}">شکایت</a>
-                            </li>
-                            <li>
-                                <p style="color: #d34e46">
-                                    ساعت کاری: {{ contact_us_info.work_time }}
-                                </p>
+                                <p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p>
                             </li>
                         </ul>
-
                     </div>
                 </div>
-
-                {% if request.user.is_authenticated %}
-                    <div
-                            class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
-                        <a href="{% url 'account:logout' %}?next={{ request.get_full_path }}"
+                <div class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'account:logout' %}"
                            class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">خروج</a>
-                    </div>
-
-                {% else %}
-                    <div class="border bg-stone-900 text-orange-200 hover:bg-orange-200 hover:text-stone-900 duration-300 rounded-full">
+                    {% else %}
                         <a href="{% url 'account:login' %}"
                            class="flex py-2.5 px-7 rounded-full font-YekanBakh-Regular">ورود</a>
-                    </div>
-                {% endif %}
+                    {% endif %}
+                </div>
             </div>
         </div>
     </section>
@@ -315,7 +285,7 @@
                     <li><a href="{% url 'weblog:all_weblogs' %}">وبلاگ</a></li>
                     <li><a href="{% url 'tiding:all_tidings' %}">خبر</a></li>
                     <li><a href="{% url 'about:faq' %}">سوالات</a></li>
-{#                    <li><a href="{% url 'contact_us:contact_us' %}">تماس</a></li>#}
+                    <li><a href="{% url 'contact_us:contact_us' %}">تماس با ما</a></li>
                     <li><a href="{% url 'contact_us:complaint' %}">شکایت</a></li>
                     <li>
                         <p style="color: #d34e46">

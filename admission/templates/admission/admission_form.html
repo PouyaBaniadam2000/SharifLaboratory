@@ -1,151 +1,141 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load widget_tweaks %}
 
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}">
-    <link rel="stylesheet" href="{% static 'public/build/style.css' %}">
-    <title>فرم پذیرش</title>
-</head>
-<body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
+{% block title %} فرم پذیرش {% endblock %}
 
-<div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
-    <div class="relative py-3 sm:max-w-sm sm:mx-auto">
-        <div
-                class="absolute inset-0 bg-stone-900 transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
-        </div>
-        <div class="relative px-4 py-10 bg-gradient-to-t from-orange-100 to-[#f5f1e4] sm:rounded-3xl sm:p-14">
+{% block content %}
+    <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12 mt-36">
+        <div class="relative py-3 sm:max-w-sm sm:mx-auto">
+            <div
+                    class="absolute inset-0 bg-stone-900 transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+            </div>
+            <div class="relative px-4 py-10 bg-gradient-to-t from-orange-100 to-[#f5f1e4] sm:rounded-3xl sm:p-14">
 
-            <div class="max-w-md mx-auto">
-                <div>
-                    <h1 class="text-xl form_h1 text-center font-YekanBakh-Bold">فرم پذیرش</h1>
-                    </p>
-                </div>
-                <div class="divide-y divide-gray-200">
-                    <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                <div class="max-w-md mx-auto">
+                    <div>
+                        <h1 class="text-xl form_h1 text-center font-YekanBakh-Bold">فرم پذیرش</h1>
+                        </p>
+                    </div>
+                    <div class="divide-y divide-gray-200">
+                        <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
 
-                        {% if messages %}
-                            <div style="color:#00ad00;">
-                                <ul class="messages">
-                                    {% for message in messages %}
-                                        <li{% if message.tags %}
-                                            class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        {% endif %}
-                        <form action="{% url 'admission:form' %}" method="post">
-                            {% csrf_token %}
-
-                            {{ form.company_name|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"placeholder:* نام شرکت" }}
-                            {% if form.company_name.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.company_name.errors }}
+                            {% if messages %}
+                                <div style="color:#00ad00;">
+                                    <ul class="messages">
+                                        {% for message in messages %}
+                                            <li{% if message.tags %}
+                                                class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                             {% endif %}
-                            <br>
-                            <br>
+                            <form action="{% url 'admission:form' %}" method="post">
+                                {% csrf_token %}
 
-                            {{ form.national_code|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"placeholder:* کد ملی" }}
-                            {% if form.national_code.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.national_code.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.company_name|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"placeholder:* نام شرکت" }}
+                                {% if form.company_name.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.company_name.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.address|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm"|attr:"placeholder:* آدرس" }}
-                            {% if form.address.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.address.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.national_code|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"placeholder:* کد ملی" }}
+                                {% if form.national_code.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.national_code.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.landline_phone|attr:"placeholder:* تلفن ثابت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.landline_phone.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.landline_phone.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.address|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm"|attr:"placeholder:* آدرس" }}
+                                {% if form.address.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.address.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.mobile_phone|attr:"placeholder:* تلفن همراه"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.mobile_phone_or_username.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.mobile_phone_or_username.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.landline_phone|attr:"placeholder:* تلفن ثابت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.landline_phone.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.landline_phone.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.email|attr:"placeholder:* آدرس ایمیل"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.email.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.email.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.mobile_phone|attr:"placeholder:* تلفن همراه"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.mobile_phone_or_username.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.mobile_phone_or_username.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.test_name|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"placeholder:* نام آزمون" }}
-                            {% if form.test_name.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.test_name.errors }}
-                                </div>
-                            {% endif %}
+                                {{ form.email|attr:"placeholder:* آدرس ایمیل"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.email.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.email.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            <p style="margin-top: -2px;" class="mt-6 text-xs text-gray-600 text-center leading-8">
-                                نام آزمون را نمی‌دانید؟
-                                <a style="color: whitesmoke" href="{% static 'assets/files/test_names.pdf' %}" download="true" class="border-b border-gray-500 border-dotted">
-                                    فرم را دانلود کنید.
-                                </a>
-                            </p>
+                                {{ form.test_name|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"placeholder:* نام آزمون" }}
+                                {% if form.test_name.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.test_name.errors }}
+                                    </div>
+                                {% endif %}
 
-                            {{ form.instance_details|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm"|attr:"placeholder:* مشخصات نمونه" }}
-                            {% if form.instance_details.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.instance_details.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                <p style="margin-top: -2px;" class="mt-6 text-xs text-gray-600 text-center leading-8">
+                                    نام آزمون را نمی‌دانید؟
+                                    <a style="color: whitesmoke" href="{% static 'assets/files/test_names.pdf' %}"
+                                       download="true" class="border-b border-gray-500 border-dotted">
+                                        فرم را دانلود کنید.
+                                    </a>
+                                </p>
 
-                            {{ form.description|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm"|attr:"placeholder:* توضیحات" }}
-                            {% if form.description.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.description.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.instance_details|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm"|attr:"placeholder:* مشخصات نمونه" }}
+                                {% if form.instance_details.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.instance_details.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            <button type="submit"
-                                    class="btn bg-stone-800 w-full hover:bg-stone-900 text-white rounded-full text-sm">
-                                تأیید
-                            </button>
-                        </form>
+                                {{ form.description|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm"|attr:"placeholder:* توضیحات" }}
+                                {% if form.description.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.description.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
+
+                                <button type="submit"
+                                        class="btn bg-stone-800 w-full hover:bg-stone-900 text-white rounded-full text-sm">
+                                    تأیید
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="w-full flex justify-center">
-                <a href="{% url 'home:home' %}">
-                    <button class="flex items-center bg-white rounded-full px-6 py-2 text-sm font-medium text-gray-800 hover:bg-orange-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 hover:duration-300">
-                        بازگشت به صفحه اصلی
-                    </button>
-                </a>
+                <div class="w-full flex justify-center">
+                    <a href="{% url 'home:home' %}">
+                        <button class="flex items-center bg-white rounded-full px-6 py-2 text-sm font-medium text-gray-800 hover:bg-orange-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 hover:duration-300">
+                            بازگشت به صفحه اصلی
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<script src="{% static 'node_modules/swiper/swiper-bundle.min.js' %}"></script>
-<script src="{% static 'src/js/main.js' %}"></script>
-</body>
-</html>
+{% endblock %}

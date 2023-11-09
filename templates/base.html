@@ -7,14 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'public/build/style.css' %}"/>
-    <style>
-        /* Additional custom styles */
 
-    </style>
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
-<header>
+
+<header style="overflow: hidden; position: fixed; top: -100px; margin-top: 100px; width: 100%; z-index: 30; background: whitesmoke;">
     <section class="px-4 static">
         <div class="container mx-auto max-w-screen-xl">
             <div class="flex justify-between items-center py-6">
@@ -176,7 +174,7 @@
                                     <summary>
                                         <a href="{% url 'laboratory:all_laboratories' %}">آزمایشگاه</a>
                                     </summary>
-                                    <ul class="p-2 z-10 w-48 bg-[#f5f1e4] m-0">
+                                    <ul class="p-2 w-48 bg-[#f5f1e4] m-0" style="z-index: 40;">
                                         <li>
                                             <details>
                                                 <summary>متالوژی</summary>

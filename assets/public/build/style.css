@@ -1915,6 +1915,19 @@ details.collapse summary::-webkit-details-marker{
 .mt-8{
   margin-top: 2rem;
 }
+
+.mt-16{
+  margin-top: 4rem;
+}
+
+.mt-20{
+  margin-top: 5rem;
+}
+
+.mt-36{
+  margin-top: 9rem;
+}
+
 .inline-block{
   display: inline-block;
 }
@@ -2938,4 +2951,8 @@ details.collapse summary::-webkit-details-marker{
   .lg\:pt-10{
     padding-top: 2.5rem;
   }
+}
+
+.text-justify{
+  text-align: justify;
 }

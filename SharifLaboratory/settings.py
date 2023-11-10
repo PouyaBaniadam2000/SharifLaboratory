@@ -88,6 +88,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'utils.context_processors.footer',
                 'utils.context_processors.header_menu_info',
+                'utils.context_processors.laboratory_categories',
             ],
         },
     },

@@ -1,6 +1,7 @@
-from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404, render
+from django.views.generic import ListView, DetailView, TemplateView
 from laboratory.mixins import IsAllowedMixin
-from laboratory.models import Laboratory
+from laboratory.models import Laboratory, Category
 
 
 class LaboratoryListView(ListView):
@@ -31,3 +32,17 @@ class LaboratoryDetailView(IsAllowedMixin, DetailView):
         context['previous_laboratory'] = previous_laboratory
 
         return context
+
+
+def laboratory_category_list_view(request, slug):
+    print(slug)
+    category = Category.objects.get(slug=slug)
+    print(category)
+    laboratories = Laboratory.objects.filter(category=category)
+
+    context = {
+        'category': category,
+        'laboratories': laboratories,
+    }
+
+    return render(request, 'laboratory/laboratory_category_list.html', context)

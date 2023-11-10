@@ -4,7 +4,8 @@ from django.utils.html import format_html
 
 
 class Category(models.Model):
-    parent = models.ForeignKey("self", blank=True, null=True, on_delete=models.CASCADE, related_name="subs")
+    parent = models.ForeignKey("self", blank=True, null=True, on_delete=models.CASCADE, verbose_name="والد",
+                               help_text="ضروری", related_name="subs")
     title = models.CharField(max_length=100, verbose_name="تیتر", help_text="ضروری")
     slug = models.SlugField(allow_unicode=True, max_length=150, verbose_name="اسلاگ (متن داخل URL)", help_text="ضروری")
 

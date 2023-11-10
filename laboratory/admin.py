@@ -33,5 +33,5 @@ class LaboratoryAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("title", "slug")
+    list_display = ("title", "parent", "slug")
     prepopulated_fields = {"slug": ["title"]}

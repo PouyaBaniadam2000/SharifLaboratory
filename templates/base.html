@@ -11,8 +11,8 @@
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
-
-<header style="overflow: hidden; position: fixed; top: -100px; margin-top: 100px; width: 100%; z-index: 30; background: whitesmoke;">
+{#style="overflow: hidden; position: fixed; top: -100px; margin-top: 100px; width: 100%; z-index: 2; background: whitesmoke;"#}
+<header>
     <section class="px-4 static">
         <div class="container mx-auto max-w-screen-xl">
             <div class="flex justify-between items-center py-6">
@@ -72,53 +72,30 @@
                                        href="{% url 'admission:form' %}">فرم پذیرش</a></li>
                                 <li>
                                     <details>
-                                        <summary>
-                                            <a href="{% url 'laboratory:all_laboratories' %}">آزمایشگاه
-                                            </a>
-                                        </summary>
+                                        <summary><a href="">آزمایشگاه ها</a></summary>
                                         <ul class="p-2 z-10 w-48 bg-[#f5f1e4] m-0">
-                                            <li>
-                                                <details>
-                                                    <summary>
-                                                        متالوژی
-                                                    </summary>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="https://shariflab.pythonanywhere.com/laboratory/کوانتومتری">کوانتومتری</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://shariflab.pythonanywhere.com/laboratory/متالوگرافی">متالوگرافی</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://shariflab.pythonanywhere.com/laboratory/خوردگی">خوردگی</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://shariflab.pythonanywhere.com/laboratory/میکروسکوپ-الکترونی">میکروسکوپ
-                                                                الکترونی</a></li>
-                                                        <li>
-                                                            <a href="https://shariflab.pythonanywhere.com/laboratory/آزمون-های-پرتابل">آزمون
-                                                                های پرتابل</a></li>
+                                            {% for category in categories %}
+                                                {% if not category.parent %}
+                                                    {% if category.subs.all %}
                                                         <li>
                                                             <details>
-                                                                <summary>
-                                                                    خواص مکانیکی
-                                                                </summary>
+                                                                <summary>{{ category.title }}</summary>
                                                                 <ul>
-                                                                    <li>
-                                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/کشش-فشار-خمش">کشش-فشار-خمش</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/ضربه-شارپی">ضربه
-                                                                            شارپی</a></li>
-                                                                    <li>
-                                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/سختی-سنجی">سختی
-                                                                            سنجی</a></li>
+                                                                    {% for sub in category.subs.all %}
+                                                                        <li>
+                                                                            <a href="{% url 'laboratory:category_laboratories' sub.slug %}">{{ sub.title }}</a>
+                                                                        </li>
+                                                                    {% endfor %}
                                                                 </ul>
                                                             </details>
                                                         </li>
-                                                    </ul>
-                                                </details>
-                                            </li>
+                                                    {% else %}
+                                                        <li>
+                                                            <a href="{% url 'laboratory:category_laboratories' category.slug %}">{{ category.title }}</a>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
                                         </ul>
                                     </details>
                                 </li>
@@ -175,45 +152,28 @@
                                         <a href="{% url 'laboratory:all_laboratories' %}">آزمایشگاه</a>
                                     </summary>
                                     <ul class="p-2 w-48 bg-[#f5f1e4] m-0" style="z-index: 40;">
-                                        <li>
-                                            <details>
-                                                <summary>متالوژی</summary>
-                                                <ul>
-                                                    <li>
-                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/کوانتومتری">کوانتومتری</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/متالوگرافی">متالوگرافی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/خوردگی">خوردگی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/میکروسکوپ-الکترونی">میکروسکوپ
-                                                            الکترونی</a></li>
-                                                    <li>
-                                                        <a href="https://shariflab.pythonanywhere.com/laboratory/آزمون-های-پرتابل">آزمون
-                                                            های پرتابل</a></li>
-                                                    <li>
+                                        {% for category in categories %}
+                                            {% if not category.parent %}
+                                                {% if category.subs.all %}
                                                     <li>
                                                         <details>
-                                                            <summary>خواص مکانیکی</summary>
+                                                            <summary>{{ category.title }}</summary>
                                                             <ul>
-                                                                <li>
-                                                                    <a href="https://shariflab.pythonanywhere.com/laboratory/کشش-فشار-خمش">کشش-فشار-خمش</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="https://shariflab.pythonanywhere.com/laboratory/ضربه-شارپی">ضربه
-                                                                        شارپی</a></li>
-                                                                <li>
-                                                                    <a href="https://shariflab.pythonanywhere.com/laboratory/سختی-سنجی">سختی
-                                                                        سنجی</a></li>
+                                                                {% for sub in category.subs.all %}
+                                                                    <li>
+                                                                        <a href="{% url 'laboratory:category_laboratories' sub.slug %}">{{ sub.title }}</a>
+                                                                    </li>
+                                                                {% endfor %}
                                                             </ul>
                                                         </details>
                                                     </li>
-                                                </ul>
-                                            </details>
-                                        </li>
+                                                {% else %}
+                                                    <li>
+                                                        <a href="{% url 'laboratory:category_laboratories' category.slug %}">{{ category.title }}</a>
+                                                    </li>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
                                     </ul>
                                 </details>
                             </li>

@@ -48,7 +48,7 @@
 
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
 
-                {% for laboratory in laboratory_list %}
+                {% for laboratory in laboratories %}
                     <!-- image - start -->
                     <a href="{% url 'laboratory:laboratory_detail' laboratory.slug %}"
                        class="group relative flex justify-center h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-72">

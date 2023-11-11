@@ -79,7 +79,7 @@
                                                     {% if category.subs.all %}
                                                         <li>
                                                             <details>
-                                                                <summary>{{ category.title }}</summary>
+                                                                <summary><a href="{% url 'laboratory:category_laboratories' category.slug %}">{{ category.title }}</a></summary>
                                                                 <ul>
                                                                     {% for sub in category.subs.all %}
                                                                         <li>
@@ -157,7 +157,7 @@
                                                 {% if category.subs.all %}
                                                     <li>
                                                         <details>
-                                                            <summary>{{ category.title }}</summary>
+                                                            <summary><a href="{% url 'laboratory:category_laboratories' category.slug %}">{{ category.title }}</a></summary>
                                                             <ul>
                                                                 {% for sub in category.subs.all %}
                                                                     <li>

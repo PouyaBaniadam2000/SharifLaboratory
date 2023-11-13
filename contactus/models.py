@@ -34,8 +34,12 @@ class ContactInfo(models.Model):
     work_time = models.CharField(max_length=200, verbose_name="ساعت کاری", help_text="ضروری")
     address = models.CharField(max_length=200, verbose_name="آدرس", help_text="ضروری")
     email = models.EmailField(max_length=255, verbose_name="ایمیل", help_text="ضروری")
-    mobile_phone = models.CharField(max_length=11, verbose_name="شماره تلفن همراه", help_text="ضروری")
-    landline_phone = models.CharField(unique=True, max_length=15, verbose_name="شماره تلفن ثابت", help_text="ضروری")
+    telegram = models.CharField(max_length=150, verbose_name="تلگرام", help_text="ضروری")
+    whatsapp = models.CharField(max_length=150, verbose_name="واتس اپ", help_text="ضروری")
+    eitta = models.CharField(max_length=150, verbose_name="ایتا", help_text="ضروری")
+    mobile_phone = models.CharField(max_length=150, verbose_name="شماره تلفن همراه", help_text="ضروری")
+    landline_phone_1 = models.CharField(unique=True, max_length=150, verbose_name="شماره تلفن ثابت", help_text="ضروری")
+    landline_phone_2 = models.CharField(unique=True, max_length=150, verbose_name="شماره تلفن ثابت", help_text="ضروری")
 
     def __str__(self):
         return "پل ارتباطی"

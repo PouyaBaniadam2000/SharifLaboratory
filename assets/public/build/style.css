@@ -1762,6 +1762,11 @@ details.collapse summary::-webkit-details-marker{
 .top-10{
   top: 2.5rem;
 }
+
+.top-20{
+  top: 5rem;
+}
+
 .top-5{
   top: 1.25rem;
 }

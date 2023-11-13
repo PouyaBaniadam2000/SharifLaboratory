@@ -1,174 +1,163 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load widget_tweaks %}
 
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}">
-    <link rel="stylesheet" href="{% static 'public/build/style.css' %}">
-    <title>ثبت نام</title>
-</head>
-<body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
+{% block title %} ثبت نام {% endblock %}
 
-<div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
-    <div class="relative py-3 sm:max-w-sm sm:mx-auto">
-        <div
-                class="absolute inset-0 bg-stone-900 transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
-        </div>
-        <div class="relative px-4 py-10 bg-gradient-to-t from-orange-100 to-[#f5f1e4] sm:rounded-3xl sm:p-14">
+{% block content %}
+    <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+        <div class="relative py-3 sm:max-w-sm sm:mx-auto">
+            <div
+                    class="absolute inset-0 bg-stone-900 transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+            </div>
+            <div class="relative px-4 py-10 bg-gradient-to-t from-orange-100 to-[#f5f1e4] sm:rounded-3xl sm:p-14">
 
-            <div class="max-w-md mx-auto">
-                <div>
-                    <h1 class="text-xl form_h1 text-center font-YekanBakh-Bold">ثبت نام</h1>
-                </div>
-                <div class="divide-y divide-gray-200">
-                    <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                        <form action="{% url 'account:register' %}" method="post">
-                            {% csrf_token %}
+                <div class="max-w-md mx-auto">
+                    <div>
+                        <h1 class="text-xl form_h1 text-center font-YekanBakh-Bold">ثبت نام</h1>
+                    </div>
+                    <div class="divide-y divide-gray-200">
+                        <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                            <form action="{% url 'account:register' %}" method="post">
+                                {% csrf_token %}
 
-                            {{ form.first_name|attr:"placeholder:* نام"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.first_name.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.first_name.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.first_name|attr:"placeholder:* نام"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.first_name.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.first_name.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.last_name|attr:"placeholder:* نام خانوادگی"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.last_name.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.last_name.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.last_name|attr:"placeholder:* نام خانوادگی"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.last_name.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.last_name.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.company_name|attr:"placeholder:نام شرکت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"id:company_name" }}
-                            {% if form.company_name.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.company_name.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.company_name|attr:"placeholder:نام شرکت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"id:company_name" }}
+                                {% if form.company_name.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.company_name.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.activity_field|attr:"placeholder:حوزه فعالیت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"style:display:none;"|attr:"id:activity_field" }}
-                            {% if form.activity_field.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.activity_field.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.activity_field|attr:"placeholder:حوزه فعالیت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm"|attr:"style:display:none;"|attr:"id:activity_field" }}
+                                {% if form.activity_field.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.activity_field.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.username|attr:"placeholder:* نام کاربری"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.username.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.username.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.username|attr:"placeholder:* نام کاربری"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.username.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.username.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.password|attr:"placeholder:* رمز عبور"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.password.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.password.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.password|attr:"placeholder:* رمز عبور"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.password.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.password.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.password_repeat |attr:"placeholder:* تکرار رمز عبور"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.non_field_errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.non_field_errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.password_repeat |attr:"placeholder:* تکرار رمز عبور"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.non_field_errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.non_field_errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
 
-                            {{ form.mobile_phone|attr:"placeholder:* تلفن همراه"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.mobile_phone.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.mobile_phone.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.mobile_phone|attr:"placeholder:* تلفن همراه"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.mobile_phone.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.mobile_phone.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.landline_phone|attr:"placeholder:تلفن ثابت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.landline_phone.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.landline_phone.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.landline_phone|attr:"placeholder:تلفن ثابت"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.landline_phone.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.landline_phone.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.email|attr:"placeholder:* آدرس ایمیل"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.email.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.email.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.email|attr:"placeholder:* آدرس ایمیل"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.email.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.email.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.address|attr:"placeholder:* آدرس"|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm" }}
-                            {% if form.address.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.address.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.address|attr:"placeholder:* آدرس"|attr:"class:textarea w-full h-32 rounded-3xl focus:outline-none placeholder:text-sm" }}
+                                {% if form.address.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.address.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            {{ form.postal_code|attr:"placeholder:* کد پستی"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
-                            {% if form.postal_code.errors %}
-                                <div style="color:#CC3434;">
-                                    {{ form.postal_code.errors }}
-                                </div>
-                            {% endif %}
-                            <br>
-                            <br>
+                                {{ form.postal_code|attr:"placeholder:* کد پستی"|attr:"class:input w-full rounded-full focus:outline-none placeholder:text-sm" }}
+                                {% if form.postal_code.errors %}
+                                    <div style="color:#CC3434;">
+                                        {{ form.postal_code.errors }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                                <br>
 
-                            <button class="btn bg-stone-800 w-full hover:bg-stone-900 text-white rounded-full text-sm">
-                                ثبت
-                                نام
-                            </button>
+                                <button class="btn bg-stone-800 w-full hover:bg-stone-900 text-white rounded-full text-sm">
+                                    ثبت
+                                    نام
+                                </button>
 
-                        </form>
-                        <p class="mt-6 text-xs text-gray-600 text-center leading-8">
-                            قبلا حساب کاربری ساخته اید؟
-                            <a href="{% url 'account:login' %}" class="border-b border-gray-500 border-dotted">
-                                وارد شوید.
-                            </a>
-                        </p>
+                            </form>
+                            <p class="mt-6 text-xs text-gray-600 text-center leading-8">
+                                قبلا حساب کاربری ساخته اید؟
+                                <a href="{% url 'account:login' %}" class="border-b border-gray-500 border-dotted">
+                                    وارد شوید.
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="w-full flex justify-center">
-                <a href="{% url 'home:home' %}">
-                    <button class="flex items-center bg-white rounded-full px-6 py-2 text-sm font-medium text-gray-800 hover:bg-orange-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 hover:duration-300">
-                        بازگشت به صفحه اصلی
-                    </button>
-                </a>
-            </div>
+                <div class="w-full flex justify-center">
+                    <a href="{% url 'home:home' %}">
+                        <button class="flex items-center bg-white rounded-full px-6 py-2 text-sm font-medium text-gray-800 hover:bg-orange-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 hover:duration-300">
+                            بازگشت به صفحه اصلی
+                        </button>
+                    </a>
+                </div>
 
+            </div>
         </div>
     </div>
-</div>
-
-<script src="{% static 'node_modules/swiper/swiper-bundle.min.js' %}"></script>
-<script src="{% static 'src/js/main.js' %}"></script>
-
-<script>
+    <script>
     document.getElementById("company_name").addEventListener("click", function () {
         var activityField = document.getElementById("activity_field");
         if (activityField.style.display === "none" || activityField.style.display === "") {
@@ -182,7 +171,6 @@
         document.getElementById(".activity_field").appendChild(lineBreak2);
     });
 </script>
+{% endblock %}
 
 
-</body>
-</html>

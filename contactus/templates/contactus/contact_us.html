@@ -29,7 +29,7 @@
             <div class="flex justify-center relative my-16">
                 <h2 class="font-YekanBakh-ExtraBlack text-3xl">تمــــــاس بــــا مــــا</h2>
                 <div class="absolute -top-6">
-                    <span class="font-YekanBakh-ExtraBlack text-6xl text-opacity-10 text-stone-900">contact</span>
+                    {#                    <span class="font-YekanBakh-ExtraBlack text-6xl text-opacity-10 text-stone-900">contact</span>#}
 
                 </div>
                 <div class="bg-orange-200 w-20 h-1.5 rounded-full absolute top-10"></div>
@@ -88,9 +88,10 @@
                             <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
                                 <p class="font-YekanBakh-Bold text-base mb-2">ایمیــل:</p>
                                 <a class="text-orange-500 leading-relaxed">{{ contact_info.email }}</a>
-                                <p class="font-YekanBakh-Bold text-base mb-2">تمـاس:</p>
-                                <p class="leading-relaxed">{{ contact_info.mobile_phone }}
-                                    {{ contact_info.landline_phone }}</p>
+                                <p class="font-YekanBakh-Bold text-base mb-2">تمـاس 1 :</p>
+                                <p class="leading-relaxed">{{ contact_info.landline_phone_1 }}</p>
+                                <p class="font-YekanBakh-Bold text-base mb-2">تمـاس 2 :</p>
+                                <p class="leading-relaxed">{{ contact_info.landline_phone_2 }}</p>
                             </div>
                         </div>
                     </div>

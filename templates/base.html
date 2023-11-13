@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'public/build/style.css' %}"/>
 
+    <style>
+        @font-face {
+            font-family: "kamran";
+            src: url("../assets/assets/fonts/kamran.ttf");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .logo {
+            font-family: "kamran", serif;
+            font-size: 30px;
+            font-weight: bold
+        }
+
+    </style>
+
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body class="font-YekanBakh-Regular text-sm bg-[#f5f1e4]">
@@ -79,7 +95,9 @@
                                                     {% if category.subs.all %}
                                                         <li>
                                                             <details>
-                                                                <summary><a href="{% url 'laboratory:category_laboratories' category.slug %}">{{ category.title }}</a></summary>
+                                                                <summary><a
+                                                                        href="{% url 'laboratory:category_laboratories' category.slug %}">{{ category.title }}</a>
+                                                                </summary>
                                                                 <ul>
                                                                     {% for sub in category.subs.all %}
                                                                         <li>
@@ -112,7 +130,13 @@
                                 <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                        href="{% url 'contact_us:complaint' %}">شکایت</a></li>
                                 <li>
-                                    <p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p>
+                                    <p style="color: #d34e46">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                                        </svg>
+                                        تلفن ما : {{ contact_us_info.landline_phone }}</p>
                                 </li>
                             </ul>
                         </div>
@@ -120,16 +144,17 @@
                 </div>
                 <div class="flex items-center gap-8">
                     <div>
-                        <a href="{% url 'home:home' %}"><img style="margin-right: 15px"
+                        <a href="{% url 'home:home' %}"><img style="margin-right: 15px; max-width: 100px"
                                                              src="{% static 'assets/images/logo-dark.png' %}"
                                                              alt=""></a>
-                        <div>
+                        <div style="font-weight: bold; font-size: 18px">
                             آزمایشگاه پیشرفته <br/>
                             خواص مواد شریف
                         </div>
                     </div>
                     <div class="hidden lg:block">
-                        <form action="{% url 'home:search_view' %}" method="get" class="relative" style="display: flex">
+                        <form action="{% url 'home:search_view' %}" method="get" class="relative"
+                              style="display: flex; max-width: 500px">
                             <div
                                     class="relative rounded-full border"
                                     style="width: -webkit-fill-available">
@@ -157,7 +182,9 @@
                                                 {% if category.subs.all %}
                                                     <li>
                                                         <details>
-                                                            <summary><a href="{% url 'laboratory:category_laboratories' category.slug %}">{{ category.title }}</a></summary>
+                                                            <summary><a
+                                                                    href="{% url 'laboratory:category_laboratories' category.slug %}">{{ category.title }}</a>
+                                                            </summary>
                                                             <ul>
                                                                 {% for sub in category.subs.all %}
                                                                     <li>
@@ -191,7 +218,13 @@
                             <li><a class="hover:border-b hover:border-orange-200 pb-1 duration-300"
                                    href="{% url 'contact_us:complaint' %}">شکایت</a></li>
                             <li>
-                                <p style="color: #d34e46">ساعت کاری: {{ contact_us_info.work_time }}</p>
+                                <p style="color: #d34e46">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                                    </svg>
+                                    تلفن ما : {{ contact_us_info.landline_phone }}</p>
                             </li>
                         </ul>
                     </div>
@@ -247,8 +280,7 @@
                     <li><a href="{% url 'contact_us:complaint' %}">شکایت</a></li>
                     <li>
                         <p style="color: #d34e46">
-                            ساعت کاری: {{ contact_us_info.work_time }}
-                        </p>
+                            تلفن ما : {{ contact_us_info.landline_phone }}</p>
                     </li>
                 </ul>
             </div>

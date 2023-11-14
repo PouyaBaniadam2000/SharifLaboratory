@@ -4,7 +4,7 @@ from record.models import Record, Category
 
 @admin.register(Record)
 class RecordAdmin(admin.ModelAdmin):
-    list_display = ('title', 'record_preview', 'display_image', 'location', 'financial_value', 'date', 'is_allowed')
+    list_display = ('title', 'record_preview', 'display_image', 'is_allowed')
     list_editable = ('is_allowed',)
     prepopulated_fields = {"slug": ["title"]}
 

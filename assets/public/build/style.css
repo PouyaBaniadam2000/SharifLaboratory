@@ -2961,3 +2961,8 @@ details.collapse summary::-webkit-details-marker{
 .text-justify{
   text-align: justify;
 }
+
+::selection {
+    background-color: #d34e46;
+    color: #ffffff;
+}

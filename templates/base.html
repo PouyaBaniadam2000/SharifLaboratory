@@ -288,17 +288,23 @@
                             تلفن 2 : {{ contact_us_info.landline_phone_2 }}</p>
                     </li>
 
-                    <li>
+                    <li class="social">
                         <img src="{% static 'assets/images/telegram.png' %}" style="width: 25px; height: 25px" alt="">
+                        <p>{{ contact_us_info.telegram }}</p>
                     </li>
-                    <li>
+                    <li class="social">
                         <img src="{% static 'assets/images/whatsapp.png' %}" style="width: 25px; height: 25px" alt="">
+                        <p>{{ contact_us_info.whatsapp }}</p>
                     </li>
-                    <li>
-                        <img src="{% static 'assets/images/gmail.png' %}" style="width: 25px; height: 25px" alt="">
+                    <li class="social">
+                        <div style="display: flex; justify-content: center">
+                            <img src="{% static 'assets/images/gmail.png' %}" style="width: 25px; height: 25px" alt="">
+                            <p style="font-size: 16px">{{ contact_us_info.email }}</p>
+                        </div>
                     </li>
-                    <li>
+                    <li class="social">
                         <img src="{% static 'assets/images/eitta.png' %}" style="width: 25px; height: 25px" alt="">
+                        <p>{{ contact_us_info.eitta }}</p>
                     </li>
                 </ul>
             </div>

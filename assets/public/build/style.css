@@ -3539,5 +3539,12 @@ input[type="checkbox"]:checked
 }
 
 .social * {
-  display: inline;
+    display: inline;
+}
+
+.fixed-header {
+    top: 0;
+    position: sticky;
+    z-index: 100;
+    background-color: #efefef
 }

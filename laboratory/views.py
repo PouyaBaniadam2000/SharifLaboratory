@@ -1,9 +1,11 @@
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import ListView, DetailView, TemplateView , View
+from django.utils.encoding import uri_to_iri
+from django.views.generic import ListView, DetailView, TemplateView, View
 from laboratory.mixins import IsAllowedMixin
 from laboratory.models import Laboratory, Category
 from urllib.parse import unquote
 from django.core.paginator import Paginator
+
 
 class LaboratoryListView(ListView):
     model = Laboratory
@@ -22,6 +24,10 @@ class LaboratoryDetailView(IsAllowedMixin, DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
+    def get_object(self, queryset=None):
+        slug = uri_to_iri(self.kwargs.get(self.slug_url_kwarg))
+        return get_object_or_404(self.model, **{self.slug_field: slug})
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -33,6 +39,7 @@ class LaboratoryDetailView(IsAllowedMixin, DetailView):
         context['previous_laboratory'] = previous_laboratory
 
         return context
+
 
 class CategoryDetailView(View):
 

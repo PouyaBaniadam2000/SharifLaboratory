@@ -42,15 +42,24 @@
                             <div class="swiper-slide">
                                 <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_1.url }}"/>
                             </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_2.url }}"/>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_3.url }}"/>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_4.url }}"/>
-                            </div>
+
+                            {% if laboratory.image_2 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_2.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if laboratory.image_3 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_3.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if laboratory.image_4 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_4.url }}"/>
+                                </div>
+                            {% endif %}
 
                             {% if laboratory.image_5 %}
                                 <div class="swiper-slide">
@@ -85,15 +94,24 @@
                             <div class="swiper-slide">
                                 <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_1.url }}"/>
                             </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_2.url }}"/>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_3.url }}"/>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_4.url }}"/>
-                            </div>
+
+                            {% if laboratory.image_2 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_2.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if laboratory.image_3 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_3.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if laboratory.image_4 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ laboratory.image_4.url }}"/>
+                                </div>
+                            {% endif %}
 
                             {% if laboratory.image_5 %}
                                 <div class="swiper-slide">

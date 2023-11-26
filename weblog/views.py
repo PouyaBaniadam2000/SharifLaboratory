@@ -1,6 +1,8 @@
 from django.views.generic import ListView, DetailView
 from weblog.mixins import IsAllowedMixin
 from weblog.models import Weblog, Category
+from django.shortcuts import get_object_or_404
+from django.utils.encoding import uri_to_iri
 
 
 class WeblogListView(ListView):
@@ -19,6 +21,10 @@ class WeblogDetailView(IsAllowedMixin, DetailView):
     model = Weblog
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+    def get_object(self, queryset=None):
+        slug = uri_to_iri(self.kwargs.get(self.slug_url_kwarg))
+        return get_object_or_404(self.model, **{self.slug_field: slug})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

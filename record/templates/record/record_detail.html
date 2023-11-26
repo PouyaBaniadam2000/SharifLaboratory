@@ -42,15 +42,24 @@
                             <div class="swiper-slide">
                                 <img class="rounded-xl cursor-pointer" src="{{ record.image_1.url }}"/>
                             </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ record.image_2.url }}"/>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ record.image_3.url }}"/>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ record.image_4.url }}"/>
-                            </div>
+
+                            {% if record.image_2 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ record.image_2.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if record.image_3 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ record.image_3.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if record.image_4 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ record.image_4.url }}"/>
+                                </div>
+                            {% endif %}
 
                             {% if record.image_5 %}
                                 <div class="swiper-slide">
@@ -85,15 +94,24 @@
                             <div class="swiper-slide">
                                 <img class="rounded-xl cursor-pointer" src="{{ record.image_1.url }}"/>
                             </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ record.image_2.url }}"/>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ record.image_3.url }}"/>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="rounded-xl cursor-pointer" src="{{ record.image_4.url }}"/>
-                            </div>
+
+                            {% if record.image_2 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ record.image_2.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if record.image_3 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ record.image_3.url }}"/>
+                                </div>
+                            {% endif %}
+
+                            {% if record.image_4 %}
+                                <div class="swiper-slide">
+                                    <img class="rounded-xl cursor-pointer" src="{{ record.image_4.url }}"/>
+                                </div>
+                            {% endif %}
 
                             {% if record.image_5 %}
                                 <div class="swiper-slide">
@@ -157,7 +175,7 @@
                                 <a href="{% url 'record:record_detail' previous_record.slug %}"><span
                                         class="font-IRANSansWeb_Bold bg-orange-200 rounded-full px-4 py-1">مقاله قبلی ></span></a>
                                 <p class="mt-2">با مشاهده سابقه کاری قبلی یعنی <a style="color: #CC3434"
-                                                                             href="{% url 'record:record_detail' previous_record.slug %}"><span>{{ previous_record.title }}، </span></a>یک
+                                                                                  href="{% url 'record:record_detail' previous_record.slug %}"><span>{{ previous_record.title }}، </span></a>یک
                                     مروری نسبت به فعالیت های انجام شده توسط تیم ما داشته باشید.</p>
                             </div>
                         {% endif %}

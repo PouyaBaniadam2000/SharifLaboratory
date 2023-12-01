@@ -23,7 +23,7 @@ class RegisterView(NonAuthenticatedUsersOnlyMixin, FormView):
         code = randint(1000, 9999)
         receptor = form.cleaned_data.get('mobile_phone')
         username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password_1')
+        password = form.cleaned_data.get('password')
         landline_phone = form.cleaned_data.get('landline_phone')
         postal_code = form.cleaned_data.get('postal_code')
         address = form.cleaned_data.get('address')

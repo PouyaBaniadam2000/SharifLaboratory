@@ -128,7 +128,7 @@ class OTP(models.Model):
     address = models.CharField(max_length=200, verbose_name="آدرس")
     company_name = models.CharField(max_length=100, verbose_name="نام شرکت", blank=True, null=True)
     activity_field = models.CharField(max_length=100, verbose_name="حوزه فعالیت", blank=True, null=True)
-    email = models.CharField(max_length=255, verbose_name="آدرس ایمیل")
+    email = models.CharField(max_length=255, verbose_name="آدرس ایمیل", blank=True, null=True)
     first_name = models.CharField(max_length=50, verbose_name="نام")
     last_name = models.CharField(max_length=50, verbose_name="نام خانوادگی")
     password = models.CharField(max_length=100, editable=False, blank=True, null=True, verbose_name="رمز عبور",
